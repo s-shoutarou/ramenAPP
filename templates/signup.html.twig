@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{constant('ramenApp\\Bootstrap::APP_URL')}}css/style.css">
+</head>
+
+<body>
+
+
+	<div class="form-wrapper">
+		<h1>Sign In</h1>
+		<form method="post">
+			<div class="form-item">
+				<label for="user_name"></label>
+				<input type="tezt" name="user_name" required="required" placeholder="USER NAME"></input>
+				{% if emptyname|length > 0 %}
+				<p>{{emptyname}}</p>
+				{% endif %}
+			</div>
+			<div class="form-item">
+				<label for="pass"></label>
+				<input type="password" name="pass" required="required" placeholder="Password"></input>
+				{% if emptypass|length > 0 %}
+				<p>{{emptypass}}</p>
+				{% endif %}
+			</div>
+			<div class="button-panel">
+				<input type="submit" class="button" title="Sign In" value="Sign In"></input>
+			</div>
+		</form>
+		<div class="form-footer">
+			<p><a href="#">Create an account</a></p>
+			<p><a href="#">Forgot password?</a></p>
+		</div>
+	</div>
+</body>
+
+</html>

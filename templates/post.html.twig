@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="{{constant('ramenApp\\Bootstrap::APP_URL')}}css/style.css">
+</head>
+
+<body>
+
+
+	<div class="form-wrapper">
+		<h1>投稿</h1>
+		<form method="post" enctype="multipart/form-data">
+			<div class=" form-item">
+				<label for="name"></label>
+				<input type="text" name="name" required="required" placeholder="店名"></input>
+			</div>
+
+			<div class="form-item">
+				<label for="adress"></label>
+				<input type="text" name="address" required="required" placeholder="住所"></input>
+			</div>
+
+			<div class="form-item">
+				<label for="taste"></label>
+				<input type="" name="taste" required="required" placeholder="味"></input>
+			</div>
+
+			<div class="form-item">
+				<label for="pic"></label>
+				<input type="file" name="pic" required="required" placeholder="Pic"></input>
+			</div>
+
+			<div class="form-item">
+				<textarea name="introduction" id="" cols="50" rows="10"></textarea>
+			</div>
+
+			<div class="button-panel">
+				<input type="submit" class="button" title="post" value="投稿する"></input>
+			</div>
+		</form>
+
+		<div class="form-footer">
+		</div>
+</body>
+
+</html>
