@@ -14,13 +14,17 @@ class Login
     public function userLogin($user_name, $user_pass)
     {
         $table = 'users';
-        $column = 'pass';
+        $column = 'id,pass';
         $where = ['user_name'];
         $arrVal = [$user_name];
-        $h_pass = $this->db->select($table, $column, $where, $arrVal);
-        $hash_pass = array_shift($h_pass);
-        if (password_verify($user_pass, $hash_pass['pass'])) {
-            header('Location:http://localhost:8888/ramenApp/top.html');
+        $result = $this->db->select($table, $column, $where, $arrVal);
+
+        $hash_pass = $result[0]['pass'];
+        $user_id = $result[0]['id'];
+
+        if (password_verify($user_pass, $hash_pass)) {
+            $_SESSION['user_id'] = $user_id;
+            header('Location:http://localhost:8888/ramenApp/top.php');
             exit();
         } else {
             return false;

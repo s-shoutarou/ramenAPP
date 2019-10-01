@@ -17,7 +17,7 @@ class Post
         $column = 'pic,name,address,taste,introduction';
         $arrVal = [$pic, $name, $address, $taste, $introduction];
         if ($this->db->insert($table, $column, $arrVal)) {
-            header('Location:http://localhost:8888/ramenApp/top.html');
+            header('Location:http://localhost:8888/ramenApp/top.php');
             exit();
         } else {
             echo 'ミスってます';

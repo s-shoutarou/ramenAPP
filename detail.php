@@ -6,26 +6,27 @@ require_once dirname(__FILE__) . '/Bootstrap.class.php';
 
 use ramenApp\Bootstrap;
 use ramenApp\lib\PDODatabase;
-use ramenApp\lib\Top;
+use ramenApp\lib\Detail;
 use ramenApp\lib\Session;
 
 $db = new PDODatabase(Bootstrap::DB_HOST, Bootstrap::DB_NAME, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::LOG_PATH);
-$top = new Top($db);
+$top = new Detail($db);
 $ses = new Session();
+
 
 $loade = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loade, [
     'cache' => Bootstrap::CACHE_DIR
 ]);
 
-if (!empty($_POST['search'])) {
-    $searchText = trim($_POST['search']);
-    $context['dataArr'] = $top->searchData($searchText);
+if (!empty($_GET['id']) && $_GET['id'] > 0) {
+    $id = $_GET['id'];
 } else {
-    $context['dataArr'] = $top->getData();
+    header('Location:top.php');
 }
 
+$context['dataArr'] = $top->getDetail($id);
 (!empty($_SESSION['user_id'])) ? $context['session'] = $_SESSION : '';
 
-$template = $twig->loadTemplate('top.html.twig');
+$template = $twig->loadTemplate('detail.html.twig');
 $template->display($context);

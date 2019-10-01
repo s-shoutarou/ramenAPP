@@ -73,28 +73,45 @@ class PDODatabase
         }
     }
 
-
-    public function login($user_name, $db_pass)
-    { }
-
     public function createSQL($type = '', $table = '', $column = '', $where = [], $all_flg = 0)
     {
-        switch ($type) {
-            case 'select':
-                $where_txt = [];
-                foreach ($where as $key => $val) {
-                    array_push($where_txt, $val . '=?');
-                }
-                $where_txt = implode($where_txt, ',');
-                if ($all_flg === 0) {
-                    $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where_txt;
-                } elseif ($all_flg === 1) {
-                    $sql = 'SELECT ' . $column . ' FROM ' . $table;
-                }
-                $this->sqlLOG($sql);
-                return $sql;
+        if ($type == 'select') {
+            $where_txt = [];
+            foreach ($where as $key => $val) {
+                array_push($where_txt, $val . '=?');
+            }
+            $where_txt = implode($where_txt, ' AND ');
+            if ($all_flg === 0) {
+                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where_txt;
+                $this->sqlLOG('select:' . $sql);
+            } elseif ($all_flg === 1) {
+                $sql = 'SELECT ' . $column . ' FROM ' . $table;
+                $this->sqlLOG('select:' . $sql);
+            }
+        } elseif ($type == 'search') {
+            $where = array_shift($where);
+            $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE ?';
+            $this->sqlLOG('search:' . $sql);
         }
+
+        return $sql;
     }
+
+
+    public function search($table, $column, $where, $arrVal)
+    {
+        $sql = $this->createSQL('search', $table, $column, $where);
+        $stmt = $this->dbh->prepare($sql);
+        $arrVal = ['%' . $arrVal[0] . '%'];
+        $data = [];
+        if ($stmt->execute($arrVal)) {
+            while ($result = $stmt->fetchAll(\PDO::FETCH_ASSOC)) {
+                array_push($data, $result);
+            }
+        }
+        return $data;
+    }
+
 
     private function catchError($errArr = [])
     {

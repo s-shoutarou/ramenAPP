@@ -15,8 +15,8 @@
 			<div class="form-item">
 				<label for="user_name"></label>
 				<input type="tezt" name="user_name" required="required" placeholder="USER NAME"></input>
-				{% if emptyname|length > 0 %}
-				<p>{{emptyname}}</p>
+				{% if name_err|length > 0 %}
+				<p>{{name_err}}</p>
 				{% endif %}
 			</div>
 			<div class="form-item">

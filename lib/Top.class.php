@@ -14,10 +14,27 @@ class Top
     public function getData()
     {
         $table = 'restaurants';
-        $column = 'pic,name';
+        $column = 'id,pic,name';
         $where = [];
         $arrVal = [];
         $all_flg = 1;
-        return $this->db->select($table, $column, $where, $arrVal, $all_flg);
+        $r = $this->db->select($table, $column, $where, $arrVal, $all_flg);
+        for ($i = 0; $i < 1; $i++) {
+            $r = array_shift($r);
+        }
+        return $r;
+    }
+
+    public function searchData($text)
+    {
+        $table = 'restaurants';
+        $column = 'id,pic,name';
+        $where = ['name'];
+        $arrVal = [$text];
+        $r = $this->db->search($table, $column, $where, $arrVal);
+        for ($i = 0; $i < 1; $i++) {
+            $r = array_shift($r);
+        }
+        return $r;
     }
 }

@@ -7,7 +7,7 @@
 <html>
 
 <head>
-	<title>Phantom by HTML5 UP</title>
+	<title>Ramen-APP</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="{{constant('ramenApp\\Bootstrap::APP_URL')}}css/assets/css/main.css" />
@@ -17,6 +17,8 @@
 
 
 <body class="is-preload">
+
+
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -25,8 +27,8 @@
 			<div class="inner">
 
 				<!-- Logo -->
-				<a href="index.html" class="logo">
-					<span class="symbol"><img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/logo.svg" alt="" /></span><span class="title">Phantom</span>
+				<a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}top.php" class="logo">
+					<span class="symbol"><img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/ramen.svg" alt="" /></span><span class="title">Ramen-APP</span>
 				</a>
 
 				<!-- Nav -->
@@ -43,11 +45,13 @@
 		<nav id="menu">
 			<h2>Menu</h2>
 			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="generic.html">Ipsum veroeros</a></li>
-				<li><a href="generic.html">Tempus etiam</a></li>
-				<li><a href="generic.html">Consequat dolor</a></li>
-				<li><a href="elements.html">Elements</a></li>
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}top.php">Home</a></li>
+				{% if session is empty %}
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}login.php">Login</a></li>
+				{% else %}
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}post.php">Post</a></li>
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}logout.php">Logout</a></li>
+				{% endif %}
 			</ul>
 		</nav>
 
@@ -55,143 +59,24 @@
 		<div id="main">
 			<div class="inner">
 				<header>
-					<h1>This is Phantom, a free, fully responsive site<br />
-						template designed by <a href="http://html5up.net">HTML5 UP</a>.</h1>
+					<h1>This is Ramen-APP! Skina ramen wo, shoukai sitene!!<br />
+						Responsiv nimo battiri taiou!!</h1>
 					<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
 				</header>
 				<section class="tiles">
-					<article class="style1">
+					{% for key,data in dataArr %}
+					<article class="style{{random(5) + 1}}">
 						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic01.jpg" alt="" />
+							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}pic/{{data.pic}}" alt="" width="360" height="270" />
 						</span>
-						<a href="generic.html">
-							<h2>Magna</h2>
+						<a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}detail.php?id={{data.id}}">
+							<h2>{{data.name}}</h2>
 							<div class="content">
 								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 							</div>
 						</a>
 					</article>
-					<article class="style2">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic02.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Lorem</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style3">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic03.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Feugiat</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style4">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic04.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Tempus</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style5">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic05.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Aliquam</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style6">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic06.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Veroeros</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style2">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic07.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Ipsum</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style3">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic08.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Dolor</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style1">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic09.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Nullam</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style5">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic10.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Ultricies</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style6">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic11.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Dictum</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
-					<article class="style4">
-						<span class="image">
-							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/pic12.jpg" alt="" />
-						</span>
-						<a href="generic.html">
-							<h2>Pretium</h2>
-							<div class="content">
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-						</a>
-					</article>
+					{% endfor %}
 				</section>
 			</div>
 		</div>
@@ -201,20 +86,14 @@
 			<div class="inner">
 				<section>
 					<h2>Get in touch</h2>
-					<form method="post" action="#">
+					<form method="post" action="">
 						<div class="fields">
-							<div class="field half">
-								<input type="text" name="name" id="name" placeholder="Name" />
-							</div>
-							<div class="field half">
-								<input type="email" name="email" id="email" placeholder="Email" />
-							</div>
 							<div class="field">
-								<textarea name="message" id="message" placeholder="Message"></textarea>
+								<textarea name="search" id="search" placeholder="Search"></textarea>
 							</div>
 						</div>
 						<ul class="actions">
-							<li><input type="submit" value="Send" class="primary" /></li>
+							<li><input type="submit" value="Search" class="primary" /></li>
 						</ul>
 					</form>
 				</section>
