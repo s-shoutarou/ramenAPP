@@ -8,6 +8,7 @@ use ramenApp\Bootstrap;
 use ramenApp\lib\PDODatabase;
 use ramenApp\lib\Login;
 use ramenApp\lib\Session;
+use ramenApp\lib\Functions;
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loader, [
@@ -17,26 +18,18 @@ $twig = new \Twig_Environment($loader, [
 $db = new PDODatabase(Bootstrap::DB_HOST, Bootstrap::DB_NAME, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::LOG_PATH);
 $login =  new Login($db);
 $ses = new Session();
+$fun = new Functions();
+$context = [];
 
-if (!empty($_SESSION['user_name'])) {
-    header('Location:top.php');
-}
+$fun->loginCheck();
 
-
-if (!empty($_POST['user_name'])) {
+if (!empty($_POST)) {
     $user_name = $_POST['user_name'];
-} else {
-    $context['emptyname'] = '名前を入力してください';
-};
-
-if (!empty($_POST['pass'])) {
     $pass = $_POST['pass'];
-} else {
-    $context['emptypass'] = 'パスワードを入力してください';
-};
-
-if (!empty($user_name) && !empty($pass)) {
-    $result = $login->userLogin($user_name, $pass);
+    $context = $fun->EmptyCheck($user_name, $pass);
+    if (empty($context)) {
+        $result = $login->userLogin($user_name, $pass);
+    }
 }
 
 $context = [];
