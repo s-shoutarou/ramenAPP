@@ -73,7 +73,7 @@ class PDODatabase
         }
     }
 
-    public function createSQL($type = '', $table = '', $column = '', $where = [], $all_flg = 0)
+    public function createSQL($type = '', $table = '', $column = '', $where = [], $all_flg = 0, $searchSwitch = 0, $searchVal = [])
     {
         if ($type == 'select') {
             $where_txt = [];
@@ -85,31 +85,51 @@ class PDODatabase
                 $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where_txt;
                 $this->sqlLOG('select:' . $sql);
             } elseif ($all_flg === 1) {
-                $sql = 'SELECT ' . $column . ' FROM ' . $table;
+                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' ORDER BY id DESC';
                 $this->sqlLOG('select:' . $sql);
             }
         } elseif ($type == 'search') {
-            $where = array_shift($where);
-            $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE ?';
-            $this->sqlLOG('search:' . $sql);
+            $like_text = [];
+            for ($i = 0; $i < count($searchVal); $i++) {
+                array_push($like_text, ' ?');
+            }
+            if (count($searchVal) == 1) {
+                $where = array_shift($where);
+                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE ?';
+                $this->sqlLOG('search・OneThing:' . $sql);
+            } elseif ($searchSwitch == 0) {
+                $where = array_shift($where);
+                $like_text = implode($like_text, ' AND ' . $where . ' LIKE');
+                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
+                $this->sqlLOG('search・AND:' . $sql);
+            } elseif ($searchSwitch == 1) {
+                $where = array_shift($where);
+                $like_text = implode($like_text, ' OR ' . $where . ' LIKE');
+                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
+                $this->sqlLOG('search・OR:' . $sql);
+            }
         }
-
+        $this->sqlLOG('ResultSQL:' . $sql);
         return $sql;
     }
 
-
-    public function search($table, $column, $where, $arrVal)
+    public function search($table, $column, $where, $arrVal = [], $searchSwitch = 0, $all_flg = 0)
     {
-        $sql = $this->createSQL('search', $table, $column, $where);
-        $stmt = $this->dbh->prepare($sql);
-        $arrVal = ['%' . $arrVal[0] . '%'];
         $data = [];
-        if ($stmt->execute($arrVal)) {
-            while ($result = $stmt->fetchAll(\PDO::FETCH_ASSOC)) {
-                array_push($data, $result);
-            }
+        $sql = $this->createSQL('search', $table, $column, $where, $all_flg, $searchSwitch, $arrVal);
+        $stmt = $this->dbh->prepare($sql);
+        foreach ($arrVal as $key => $val) {
+            array_push($data, '%' . $val . '%');
         }
-        return $data;
+        $resultData = [];
+        if ($stmt->execute($data)) {
+            while ($result = $stmt->fetchAll(\PDO::FETCH_ASSOC)) {
+                array_push($resultData, $result);
+            }
+        } else {
+            $this->catchError($stmt->errorInfo());
+        }
+        return $resultData;
     }
 
 

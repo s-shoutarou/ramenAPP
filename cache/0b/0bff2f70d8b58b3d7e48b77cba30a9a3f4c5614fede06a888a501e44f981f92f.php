@@ -177,7 +177,20 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<ul class=\"actions\">
 \t\t\t\t\t\t\t<li><input type=\"submit\" value=\"Search\" class=\"primary\" /></li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<div class=\"col-4 col-12-small\">
+\t\t\t\t\t\t\t\t\t<input type=\"radio\" id=\"AND\" name=\"ANDOR\" value=0 checked>
+\t\t\t\t\t\t\t\t\t<label for=\"AND\">AND</label>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
+\t\t\t\t\t\t\t<li>
+\t\t\t\t\t\t\t\t<div class=\"col-4 col-12-small\">
+\t\t\t\t\t\t\t\t\t<input type=\"radio\" id=\"OR\" name=\"ANDOR\" value=1>
+\t\t\t\t\t\t\t\t\t<label for=\"OR\">OR</label>
+\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t</li>
 \t\t\t\t\t\t</ul>
+
 \t\t\t\t\t</form>
 \t\t\t\t</section>
 \t\t\t\t<section>
@@ -204,23 +217,23 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 
 \t<!-- Scripts -->
 \t<script src=\"";
-        // line 123
+        // line 136
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/jquery.min.js\"></script>
 \t<script src=\"";
-        // line 124
+        // line 137
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/browser.min.js\"></script>
 \t<script src=\"";
-        // line 125
+        // line 138
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/breakpoints.min.js\"></script>
 \t<script src=\"";
-        // line 126
+        // line 139
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/util.js\"></script>
 \t<script src=\"";
-        // line 127
+        // line 140
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/main.js\"></script>
 
@@ -242,7 +255,7 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 
     public function getDebugInfo()
     {
-        return array (  224 => 127,  220 => 126,  216 => 125,  212 => 124,  208 => 123,  163 => 80,  150 => 73,  144 => 72,  137 => 70,  131 => 68,  127 => 67,  113 => 55,  108 => 53,  103 => 52,  97 => 50,  95 => 49,  91 => 48,  71 => 31,  67 => 30,  49 => 15,  44 => 13,  30 => 1,);
+        return array (  237 => 140,  233 => 139,  229 => 138,  225 => 137,  221 => 136,  163 => 80,  150 => 73,  144 => 72,  137 => 70,  131 => 68,  127 => 67,  113 => 55,  108 => 53,  103 => 52,  97 => 50,  95 => 49,  91 => 48,  71 => 31,  67 => 30,  49 => 15,  44 => 13,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

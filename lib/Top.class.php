@@ -25,13 +25,16 @@ class Top
         return $r;
     }
 
-    public function searchData($text)
+    public function searchData($text, $switch)
     {
+        $text = str_replace('　', ' ', $text);
+        $text = explode(' ', $text);
+
         $table = 'restaurants';
         $column = 'id,pic,name';
         $where = ['name'];
-        $arrVal = [$text];
-        $r = $this->db->search($table, $column, $where, $arrVal);
+        $arrVal = $text;
+        $r = $this->db->search($table, $column, $where, $arrVal, $switch);
         for ($i = 0; $i < 1; $i++) {
             $r = array_shift($r);
         }

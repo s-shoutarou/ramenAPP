@@ -19,8 +19,9 @@ $twig = new \Twig_Environment($loade, [
 ]);
 
 if (!empty($_POST['search'])) {
-    $searchText = trim($_POST['search']);
-    $context['dataArr'] = $top->searchData($searchText);
+    $searchText = $_POST['search'];
+    $searchSwitch = $_POST['ANDOR'];
+    $context['dataArr'] = $top->searchData($searchText, $searchSwitch);
 } else {
     $context['dataArr'] = $top->getData();
 }
