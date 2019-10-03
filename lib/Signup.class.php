@@ -36,7 +36,7 @@ class Signup
                     $col = 'delete_flg';
                     $where = ['id'];
                     $whereVal = [$user_id];
-                    if ($this->db->revival($table, $col, $where, $whereVal)) {
+                    if ($this->db->accountManage($table, $col, $where, $whereVal)) {
                         $_SESSION['user_id'] = $user_id;
                         header('Location:http://localhost:8888/ramenApp/top.php');
                         exit();

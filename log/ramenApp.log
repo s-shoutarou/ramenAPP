@@ -1233,3 +1233,43 @@ SELECT pass FROM users WHERE user_name=?SELECT pass FROM users WHERE user_name=?
 [日時:2019-10-03 18:44:20]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
 [日時:2019-10-03 18:44:28]クエリ内容:select:SELECT * FROM restaurants WHERE id=?
 [日時:2019-10-03 18:44:28]クエリ内容:ResultSQL:SELECT * FROM restaurants WHERE id=?
+[日時:2019-10-03 18:53:38]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:53:38]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:53:51]クエリ内容:select:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:53:51]クエリ内容:ResultSQL:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:53:51]クエリ内容:select:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:53:51]クエリ内容:ResultSQL:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:53:51]クエリ内容:INSERT INTO users (user_name,pass ) VALUES (?,? )
+[日時:2019-10-03 18:53:51]クエリ内容:select:SELECT id FROM users WHERE user_name=?
+[日時:2019-10-03 18:53:51]クエリ内容:ResultSQL:SELECT id FROM users WHERE user_name=?
+[日時:2019-10-03 18:53:51]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:53:51]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:54:05]クエリ内容:select:SELECT id,pass FROM users WHERE user_name=?
+[日時:2019-10-03 18:54:05]クエリ内容:ResultSQL:SELECT id,pass FROM users WHERE user_name=?
+[日時:2019-10-03 18:54:05]クエリ内容:UPDATE users SET delete_flg = 0 WHERE id=?
+[日時:2019-10-03 18:54:05]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:54:05]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:54:56]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:54:56]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:03]クエリ内容:select:SELECT id,pass FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:03]クエリ内容:ResultSQL:SELECT id,pass FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:16]クエリ内容:select:SELECT id,pass FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:16]クエリ内容:ResultSQL:SELECT id,pass FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:17]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:17]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:25]クエリ内容:select:SELECT id,pass FROM users WHERE user_name=?
+[日時:2019-10-03 18:55:25]クエリ内容:ResultSQL:SELECT id,pass FROM users WHERE user_name=?
+[日時:2019-10-03 18:55:25]クエリ内容:UPDATE users SET delete_flg = 1 WHERE id=?
+[日時:2019-10-03 18:55:25]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:25]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:41]クエリ内容:select:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:41]クエリ内容:ResultSQL:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:41]クエリ内容:select:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:41]クエリ内容:ResultSQL:SELECT user_name FROM users WHERE user_name=? AND delete_flg=?
+[日時:2019-10-03 18:55:41]クエリ内容:select:SELECT id,pass FROM users WHERE user_name=?
+[日時:2019-10-03 18:55:41]クエリ内容:ResultSQL:SELECT id,pass FROM users WHERE user_name=?
+[日時:2019-10-03 18:55:41]クエリ内容:UPDATE users SET delete_flg = 0 WHERE id=?
+[日時:2019-10-03 18:55:41]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:41]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:48]クエリ内容:select:SELECT id,pic,name FROM restaurants ORDER BY id DESC
+[日時:2019-10-03 18:55:48]クエリ内容:ResultSQL:SELECT id,pic,name FROM restaurants ORDER BY id DESC

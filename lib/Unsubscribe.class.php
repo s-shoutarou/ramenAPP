@@ -24,7 +24,8 @@ class Unsubscribe
             $col = 'delete_flg';
             $where = ['id'];
             $whereVal = [$user_id];
-            if ($this->db->unsubscribe($table, $col, $where, $whereVal)) {
+            $del_flg = 1;
+            if ($this->db->accountManage($table, $col, $where, $whereVal, $del_flg)) {
                 header('Location:http://localhost:8888/ramenApp/logout.php');
                 exit();
             } else {

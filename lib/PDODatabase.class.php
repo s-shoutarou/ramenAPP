@@ -132,14 +132,14 @@ class PDODatabase
         return $resultData;
     }
 
-    public function unsubscribe($table, $column, $where, $whereVal)
+    public function accountManage($table, $column, $where, $whereVal, $del_flg = 0)
     {
         $where_txt = [];
         foreach ($where as $key => $val) {
             array_push($where_txt, $val . '=?');
         }
         $where_txt = implode($where_txt, ' AND ');
-        $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = 1 WHERE ' . $where_txt;
+        $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = ' . $del_flg . ' WHERE ' . $where_txt;
         $this->sqlLOG($sql);
         $stmt = $this->dbh->prepare($sql);
         if ($stmt->execute($whereVal)) {
