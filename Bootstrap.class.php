@@ -15,7 +15,6 @@ class Bootstrap
     const APP_URL = 'http://localhost:8888/ramenApp/';
     const LOG_PATH = self::APP_DIR . 'ramenApp/log/ramenApp.log';
 
-
     public static function loadClass($class)
     {
         $path = str_replace('\\', '/', self::APP_DIR . $class . '.class.php');

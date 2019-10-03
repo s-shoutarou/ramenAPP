@@ -117,14 +117,18 @@ class __TwigTemplate_df5ea4a34db875c0a368a14b7063afa19a07c51388eb833749c2915bb3d
         // line 58
         echo twig_escape_filter($this->env, $this->getAttribute(($context["dataArr"] ?? null), "name", []), "html", null, true);
         echo "</h1>
-\t\t\t\t<span class=\"image main\"><img src=\"";
+\t\t\t\t<h2> 味:";
         // line 59
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["dataArr"] ?? null), "taste", []), "html", null, true);
+        echo "</h2>
+\t\t\t\t<span class=\"image main\"><img src=\"";
+        // line 60
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/pic/";
         echo twig_escape_filter($this->env, $this->getAttribute(($context["dataArr"] ?? null), "pic", []), "html", null, true);
-        echo "\" alt=\"\" width=\"800\" height=\"600\" /></span>
+        echo "\" alt=\"\" width=\"900\" height=\"600\" /></span>
 \t\t\t\t<p>";
-        // line 60
+        // line 61
         echo twig_escape_filter($this->env, $this->getAttribute(($context["dataArr"] ?? null), "introduction", []), "html", null, true);
         echo "</p>
 \t\t\t</div>
@@ -176,23 +180,23 @@ class __TwigTemplate_df5ea4a34db875c0a368a14b7063afa19a07c51388eb833749c2915bb3d
 
 \t<!-- Scripts -->
 \t<script src=\"";
-        // line 109
+        // line 110
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/jquery.min.js\"></script>
 \t<script src=\"";
-        // line 110
+        // line 111
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/browser.min.js\"></script>
 \t<script src=\"";
-        // line 111
+        // line 112
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/breakpoints.min.js\"></script>
 \t<script src=\"";
-        // line 112
+        // line 113
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/util.js\"></script>
 \t<script src=\"";
-        // line 113
+        // line 114
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/main.js\"></script>
 
@@ -214,7 +218,7 @@ class __TwigTemplate_df5ea4a34db875c0a368a14b7063afa19a07c51388eb833749c2915bb3d
 
     public function getDebugInfo()
     {
-        return array (  196 => 113,  192 => 112,  188 => 111,  184 => 110,  180 => 109,  128 => 60,  122 => 59,  118 => 58,  110 => 52,  105 => 50,  100 => 49,  94 => 47,  92 => 46,  88 => 45,  68 => 28,  64 => 27,  49 => 15,  44 => 13,  30 => 1,);
+        return array (  200 => 114,  196 => 113,  192 => 112,  188 => 111,  184 => 110,  132 => 61,  126 => 60,  122 => 59,  118 => 58,  110 => 52,  105 => 50,  100 => 49,  94 => 47,  92 => 46,  88 => 45,  68 => 28,  64 => 27,  49 => 15,  44 => 13,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

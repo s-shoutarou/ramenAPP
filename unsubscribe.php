@@ -6,10 +6,11 @@ require_once dirname(__FILE__) . '/Bootstrap.class.php';
 
 use ramenApp\Bootstrap;
 use ramenApp\lib\PDODatabase;
-use ramenApp\lib\Signup;
 use ramenApp\lib\Session;
+use ramenApp\lib\Unsubscribe;
 use ramenApp\lib\Functions;
 use Dotenv\Dotenv;
+
 
 $loade = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loade, [
@@ -20,28 +21,19 @@ $dotenv = Dotenv::create(__DIR__);
 $dotenv->load();
 
 $db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), Bootstrap::LOG_PATH);
-$signup =  new Signup($db);
+$uns = new Unsubscribe($db);
 $ses = new Session();
 $fun = new Functions();
 
-$context = [];
+$fun->unsubscribeLoginCheck();
 
+$context = [];
 
 if (!empty($_POST)) {
     $user_name = $_POST['user_name'];
     $pass = $_POST['pass'];
-    $context = $fun->EmptyCheck($user_name, $pass);
-
-    if (empty($context)) {
-        if ($signup->signup($user_name, $pass)) {
-            header('Location:top.php');
-            exit();
-        } else {
-            $context['name_err'] = 'その名前はすでに登録されています';
-        }
-    }
+    $context['err_msg'] = $uns->unsubscribe($user_name, $pass);
 }
 
-
-$template = $twig->loadTemplate('signup.html.twig');
+$template = $twig->loadTemplate('unsubscribe.html.twig');
 $template->display($context);

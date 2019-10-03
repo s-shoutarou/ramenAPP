@@ -11,8 +11,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* login.html.twig */
-class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8443ff extends \Twig\Template
+/* signup.html.twig */
+class __TwigTemplate_f7da8979bee6599c0e7af403617f13cac03e8da822621eabc01d647cbb4e56db extends \Twig\Template
 {
     public function __construct(Environment $env)
     {
@@ -42,17 +42,17 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
 
 
 \t<div class=\"form-wrapper\">
-\t\t<h1>Login</h1>
+\t\t<h1>Sign In</h1>
 \t\t<form method=\"post\">
 \t\t\t<div class=\"form-item\">
 \t\t\t\t<label for=\"user_name\"></label>
 \t\t\t\t<input type=\"tezt\" name=\"user_name\" required=\"required\" placeholder=\"USER NAME\"></input>
 \t\t\t\t";
         // line 18
-        if ((twig_length_filter($this->env, ($context["emptyname"] ?? null)) > 0)) {
+        if ((twig_length_filter($this->env, ($context["name_err"] ?? null)) > 0)) {
             // line 19
             echo "\t\t\t\t<p>";
-            echo twig_escape_filter($this->env, ($context["emptyname"] ?? null), "html", null, true);
+            echo twig_escape_filter($this->env, ($context["name_err"] ?? null), "html", null, true);
             echo "</p>
 \t\t\t\t";
         }
@@ -73,11 +73,10 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
         // line 28
         echo "\t\t\t</div>
 \t\t\t<div class=\"button-panel\">
-\t\t\t\t<input type=\"submit\" class=\"button\" title=\"Login\" value=\"Login\"></input>
+\t\t\t\t<input type=\"submit\" class=\"button\" title=\"Sign In\" value=\"Sign In\"></input>
 \t\t\t</div>
 \t\t</form>
 \t\t<div class=\"form-footer\">
-
 \t\t</div>
 \t</div>
 </body>
@@ -88,7 +87,7 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
 
     public function getTemplateName()
     {
-        return "login.html.twig";
+        return "signup.html.twig";
     }
 
     public function isTraitable()
@@ -111,6 +110,6 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
 
     public function getSourceContext()
     {
-        return new Source("", "login.html.twig", "/Applications/MAMP/htdocs/ramenApp/templates/login.html.twig");
+        return new Source("", "signup.html.twig", "/Applications/MAMP/htdocs/ramenApp/templates/signup.html.twig");
     }
 }

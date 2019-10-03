@@ -11,6 +11,13 @@ class Functions
         }
     }
 
+    public function unsubscribeLoginCheck()
+    {
+        if (empty($_SESSION['user_id'])) {
+            header('Location:/ramenApp/top.php');
+        }
+    }
+
     public function EmptyCheck($user_name, $pass)
     {
         $context = [];

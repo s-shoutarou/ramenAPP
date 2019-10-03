@@ -11,8 +11,8 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* login.html.twig */
-class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8443ff extends \Twig\Template
+/* unsubscribe.html.twig */
+class __TwigTemplate_fc287e74eeaf627140b0ffe35068403733553d4c730f6e44fbe9ea4a21ff0e0f extends \Twig\Template
 {
     public function __construct(Environment $env)
     {
@@ -42,42 +42,32 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
 
 
 \t<div class=\"form-wrapper\">
-\t\t<h1>Login</h1>
-\t\t<form method=\"post\">
+\t\t<h1>退会</h1>
+\t\t";
+        // line 14
+        if ((twig_length_filter($this->env, ($context["err_msg"] ?? null)) > 0)) {
+            // line 15
+            echo "\t\t<p style=\"text-align: center\">";
+            echo twig_escape_filter($this->env, ($context["err_msg"] ?? null), "html", null, true);
+            echo "</p>
+\t\t";
+        }
+        // line 17
+        echo "\t\t<form method=\"post\">
 \t\t\t<div class=\"form-item\">
 \t\t\t\t<label for=\"user_name\"></label>
 \t\t\t\t<input type=\"tezt\" name=\"user_name\" required=\"required\" placeholder=\"USER NAME\"></input>
-\t\t\t\t";
-        // line 18
-        if ((twig_length_filter($this->env, ($context["emptyname"] ?? null)) > 0)) {
-            // line 19
-            echo "\t\t\t\t<p>";
-            echo twig_escape_filter($this->env, ($context["emptyname"] ?? null), "html", null, true);
-            echo "</p>
-\t\t\t\t";
-        }
-        // line 21
-        echo "\t\t\t</div>
+
+\t\t\t</div>
 \t\t\t<div class=\"form-item\">
 \t\t\t\t<label for=\"pass\"></label>
 \t\t\t\t<input type=\"password\" name=\"pass\" required=\"required\" placeholder=\"Password\"></input>
-\t\t\t\t";
-        // line 25
-        if ((twig_length_filter($this->env, ($context["emptypass"] ?? null)) > 0)) {
-            // line 26
-            echo "\t\t\t\t<p>";
-            echo twig_escape_filter($this->env, ($context["emptypass"] ?? null), "html", null, true);
-            echo "</p>
-\t\t\t\t";
-        }
-        // line 28
-        echo "\t\t\t</div>
+\t\t\t</div>
 \t\t\t<div class=\"button-panel\">
-\t\t\t\t<input type=\"submit\" class=\"button\" title=\"Login\" value=\"Login\"></input>
+\t\t\t\t<input type=\"submit\" class=\"button\" title=\"Login\" value=\"退会\"></input>
 \t\t\t</div>
 \t\t</form>
 \t\t<div class=\"form-footer\">
-
 \t\t</div>
 \t</div>
 </body>
@@ -88,7 +78,7 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
 
     public function getTemplateName()
     {
-        return "login.html.twig";
+        return "unsubscribe.html.twig";
     }
 
     public function isTraitable()
@@ -98,7 +88,7 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
 
     public function getDebugInfo()
     {
-        return array (  74 => 28,  68 => 26,  66 => 25,  60 => 21,  54 => 19,  52 => 18,  37 => 6,  30 => 1,);
+        return array (  56 => 17,  50 => 15,  48 => 14,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -111,6 +101,6 @@ class __TwigTemplate_bd29bb188e2ff695be9166b26b51ca29c03993e1cfd27a7ad0792cd4ee8
 
     public function getSourceContext()
     {
-        return new Source("", "login.html.twig", "/Applications/MAMP/htdocs/ramenApp/templates/login.html.twig");
+        return new Source("", "unsubscribe.html.twig", "/Applications/MAMP/htdocs/ramenApp/templates/unsubscribe.html.twig");
     }
 }

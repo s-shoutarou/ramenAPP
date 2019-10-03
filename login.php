@@ -9,7 +9,7 @@ use ramenApp\lib\PDODatabase;
 use ramenApp\lib\Login;
 use ramenApp\lib\Session;
 use ramenApp\lib\Functions;
-use Dotenv;
+use Dotenv\Dotenv;
 
 
 $loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
@@ -17,7 +17,7 @@ $twig = new \Twig_Environment($loader, [
     'cache' => Bootstrap::CACHE_DIR
 ]);
 
-$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv = Dotenv::create(__DIR__);
 $dotenv->load();
 
 $db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), Bootstrap::LOG_PATH);

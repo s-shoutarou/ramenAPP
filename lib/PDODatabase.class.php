@@ -132,6 +132,39 @@ class PDODatabase
         return $resultData;
     }
 
+    public function unsubscribe($table, $column, $where, $whereVal)
+    {
+        $where_txt = [];
+        foreach ($where as $key => $val) {
+            array_push($where_txt, $val . '=?');
+        }
+        $where_txt = implode($where_txt, ' AND ');
+        $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = 1 WHERE ' . $where_txt;
+        $this->sqlLOG($sql);
+        $stmt = $this->dbh->prepare($sql);
+        if ($stmt->execute($whereVal)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function revival($table, $column, $where, $whereVal)
+    {
+        $where_txt = [];
+        foreach ($where as $key => $val) {
+            array_push($where_txt, $val . '=?');
+        }
+        $where_txt = implode($where_txt, ' AND ');
+        $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = 0 WHERE ' . $where_txt;
+        $this->sqlLOG($sql);
+        $stmt = $this->dbh->prepare($sql);
+        if ($stmt->execute($whereVal)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     private function catchError($errArr = [])
     {

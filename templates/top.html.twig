@@ -48,9 +48,11 @@
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}top.php">Home</a></li>
 				{% if session is empty %}
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}login.php">Login</a></li>
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}signup.php">Signup</a></li>
 				{% else %}
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}post.php">Post</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}logout.php">Logout</a></li>
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}unsubscribe.php">Unsubscribe</a></li>
 				{% endif %}
 			</ul>
 		</nav>

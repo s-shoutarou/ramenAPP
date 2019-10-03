@@ -15,12 +15,16 @@ class Login
     {
         $table = 'users';
         $column = 'id,pass';
-        $where = ['user_name'];
-        $arrVal = [$user_name];
+        $where = ['user_name', 'delete_flg'];
+        $arrVal = [$user_name, 0];
         $result = $this->db->select($table, $column, $where, $arrVal);
 
-        $hash_pass = $result[0]['pass'];
-        $user_id = $result[0]['id'];
+        if (!empty($result)) {
+            $hash_pass = $result[0]['pass'];
+            $user_id = $result[0]['id'];
+        } else {
+            return false;
+        }
 
         if (password_verify($user_pass, $hash_pass)) {
             $_SESSION['user_id'] = $user_id;
