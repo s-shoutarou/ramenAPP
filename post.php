@@ -9,24 +9,27 @@ use ramenApp\lib\Session;
 use ramenApp\lib\PDODatabase;
 use ramenApp\lib\Post;
 use ramenApp\lib\Functions;
-
-$db = new PDODatabase(Bootstrap::DB_HOST, Bootstrap::DB_NAME, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::LOG_PATH);
-$post = new Post($db);
-$ses = new Session();
-$fun = new Functions();
+use Dotenv;
 
 $loade = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loade, [
     'cache' => Bootstrap::CACHE_DIR
 ]);
 
+$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+
+$db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), Bootstrap::LOG_PATH);
+$post = new Post($db);
+$ses = new Session();
+$fun = new Functions();
+
 $context = [];
 
 if (!empty($_POST)) {
     $postData = $_POST;
+    $context = $fun->emptyCheckPost($postData);
 }
-
-$context = $fun->emptyCheckPost($postData);
 
 if (!empty($_FILES)) {
     $file = $_FILES;

@@ -6,13 +6,9 @@ require_once dirname(__FILE__) . '/vendor/autoload.php';
 
 date_default_timezone_set('Asia/Tokyo');
 
+
 class Bootstrap
 {
-    const DB_HOST = 'localhost';
-    const DB_NAME = 'ramenApp';
-    const DB_USER = 'root';
-    const DB_PASS = 'root';
-
     const APP_DIR = '/Applications/MAMP/htdocs/';
     const TEMPLATE_DIR = self::APP_DIR . 'ramenApp/templates';
     const CACHE_DIR = self::APP_DIR . 'ramenApp/cache';

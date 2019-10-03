@@ -8,15 +8,19 @@ use ramenApp\Bootstrap;
 use ramenApp\lib\PDODatabase;
 use ramenApp\lib\Top;
 use ramenApp\lib\Session;
-
-$db = new PDODatabase(Bootstrap::DB_HOST, Bootstrap::DB_NAME, Bootstrap::DB_USER, Bootstrap::DB_PASS, Bootstrap::LOG_PATH);
-$top = new Top($db);
-$ses = new Session();
+use Dotenv;
 
 $loade = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
 $twig = new \Twig_Environment($loade, [
     'cache' => Bootstrap::CACHE_DIR
 ]);
+
+$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+
+$db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), Bootstrap::LOG_PATH);
+$top = new Top($db);
+$ses = new Session();
 
 if (!empty($_POST['search'])) {
     $searchText = $_POST['search'];
