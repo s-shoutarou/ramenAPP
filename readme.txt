@@ -1,1 +1,12 @@
 ラーメンレビュー投稿サイト
+実装機能
+登録、退会、復活、ログイン、ログアウト、投稿、AND検索、OR検索、ログイン維持(SESSION)
+その他
+.envファイルによるDB情報の外出し
+
+top.php トップ画面
+login.php ログイン画面
+logout.php ログアウト画面
+post.php 投稿画面
+detail.php 詳細画面
+unsubscribe.php 退会画面

@@ -3,6 +3,7 @@
 namespace ramenApp\lib;
 
 use PDOException;
+use ramenApp\lib\CreateSQL;
 
 class PDODatabase
 {
@@ -23,6 +24,8 @@ class PDODatabase
         $this->DB_PASS = $db_pass;
 
         $this->LOG_PATH = $log_path;
+
+        $creSQL = new CreateSQL();
     }
 
     private function dbConnect($db_host, $db_name, $db_user, $db_pass)
@@ -140,23 +143,6 @@ class PDODatabase
         }
         $where_txt = implode($where_txt, ' AND ');
         $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = ' . $del_flg . ' WHERE ' . $where_txt;
-        $this->sqlLOG($sql);
-        $stmt = $this->dbh->prepare($sql);
-        if ($stmt->execute($whereVal)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function revival($table, $column, $where, $whereVal)
-    {
-        $where_txt = [];
-        foreach ($where as $key => $val) {
-            array_push($where_txt, $val . '=?');
-        }
-        $where_txt = implode($where_txt, ' AND ');
-        $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = 0 WHERE ' . $where_txt;
         $this->sqlLOG($sql);
         $stmt = $this->dbh->prepare($sql);
         if ($stmt->execute($whereVal)) {

@@ -11,4 +11,13 @@ class Session
         session_start();
         session_regenerate_id();
     }
+
+    public function flash()
+    {
+        if (!empty($_SESSION['flash'])) {
+            $flash = $_SESSION['flash'];
+            unset($_SESSION['flash']);
+            return $flash;
+        }
+    }
 }

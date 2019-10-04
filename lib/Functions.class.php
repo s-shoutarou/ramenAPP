@@ -38,9 +38,10 @@ class Functions
     public function emptyCheckPost($post)
     {
         $context = [];
+        $err_msg = ['name' => '名前', 'address' => '住所', 'taste' => '味', 'introduction' => '感想'];
         foreach ($post as $key => $val) {
             if (empty($post[$key])) {
-                $context['empty' . $key] = $val . 'を入力してください';
+                $context['empty' . $key] = $err_msg[$key] . 'を入力してください';
             }
         }
         return $context;

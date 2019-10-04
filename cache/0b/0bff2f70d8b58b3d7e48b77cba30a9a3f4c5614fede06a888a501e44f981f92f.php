@@ -52,8 +52,17 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 
 
 <body class=\"is-preload\">
-
-
+\t";
+        // line 20
+        if ((twig_length_filter($this->env, ($context["flash"] ?? null)) > 0)) {
+            // line 21
+            echo "\t<div class=\"flash\">";
+            echo twig_escape_filter($this->env, ($context["flash"] ?? null), "html", null, true);
+            echo "</div>
+\t";
+        }
+        // line 23
+        echo "
 \t<!-- Wrapper -->
 \t<div id=\"wrapper\">
 
@@ -63,11 +72,11 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 
 \t\t\t\t<!-- Logo -->
 \t\t\t\t<a href=\"";
-        // line 30
+        // line 32
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "top.php\" class=\"logo\">
 \t\t\t\t\t<span class=\"symbol\"><img src=\"";
-        // line 31
+        // line 33
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "images/ramen.svg\" alt=\"\" /></span><span class=\"title\">Ramen-APP</span>
 \t\t\t\t</a>
@@ -87,37 +96,37 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 \t\t\t<h2>Menu</h2>
 \t\t\t<ul>
 \t\t\t\t<li><a href=\"";
-        // line 48
+        // line 50
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "top.php\">Home</a></li>
 \t\t\t\t";
-        // line 49
+        // line 51
         if (twig_test_empty(($context["session"] ?? null))) {
-            // line 50
+            // line 52
             echo "\t\t\t\t<li><a href=\"";
             echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
             echo "login.php\">Login</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 51
+            // line 53
             echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
             echo "signup.php\">Signup</a></li>
 \t\t\t\t";
         } else {
-            // line 53
+            // line 55
             echo "\t\t\t\t<li><a href=\"";
             echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
             echo "post.php\">Post</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 54
+            // line 56
             echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
             echo "logout.php\">Logout</a></li>
 \t\t\t\t<li><a href=\"";
-            // line 55
+            // line 57
             echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
             echo "unsubscribe.php\">Unsubscribe</a></li>
 \t\t\t\t";
         }
-        // line 57
+        // line 59
         echo "\t\t\t</ul>
 \t\t</nav>
 
@@ -131,30 +140,30 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 \t\t\t\t</header>
 \t\t\t\t<section class=\"tiles\">
 \t\t\t\t\t";
-        // line 69
+        // line 71
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["dataArr"] ?? null));
         foreach ($context['_seq'] as $context["key"] => $context["data"]) {
-            // line 70
+            // line 72
             echo "\t\t\t\t\t<article class=\"style";
             echo twig_escape_filter($this->env, (twig_random($this->env, 5) + 1), "html", null, true);
             echo "\">
 \t\t\t\t\t\t<span class=\"image\">
 \t\t\t\t\t\t\t<img src=\"";
-            // line 72
+            // line 74
             echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
             echo "pic/";
             echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "pic", []), "html", null, true);
             echo "\" alt=\"\" width=\"360\" height=\"270\" />
 \t\t\t\t\t\t</span>
 \t\t\t\t\t\t<a href=\"";
-            // line 74
+            // line 76
             echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
             echo "detail.php?id=";
             echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "id", []), "html", null, true);
             echo "\">
 \t\t\t\t\t\t\t<h2>";
-            // line 75
+            // line 77
             echo twig_escape_filter($this->env, $this->getAttribute($context["data"], "name", []), "html", null, true);
             echo "</h2>
 \t\t\t\t\t\t\t<div class=\"content\">
@@ -167,7 +176,7 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['key'], $context['data'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 82
+        // line 84
         echo "\t\t\t\t</section>
 \t\t\t</div>
 \t\t</div>
@@ -225,23 +234,23 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 
 \t<!-- Scripts -->
 \t<script src=\"";
-        // line 138
+        // line 140
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/jquery.min.js\"></script>
 \t<script src=\"";
-        // line 139
+        // line 141
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/browser.min.js\"></script>
 \t<script src=\"";
-        // line 140
+        // line 142
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/breakpoints.min.js\"></script>
 \t<script src=\"";
-        // line 141
+        // line 143
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/util.js\"></script>
 \t<script src=\"";
-        // line 142
+        // line 144
         echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
         echo "/js/main.js\"></script>
 
@@ -263,7 +272,7 @@ class __TwigTemplate_20aa9862ef398b3b7be7ded416cfd717a92ecc98486e7fc88281972ca42
 
     public function getDebugInfo()
     {
-        return array (  245 => 142,  241 => 141,  237 => 140,  233 => 139,  229 => 138,  171 => 82,  158 => 75,  152 => 74,  145 => 72,  139 => 70,  135 => 69,  121 => 57,  116 => 55,  112 => 54,  107 => 53,  102 => 51,  97 => 50,  95 => 49,  91 => 48,  71 => 31,  67 => 30,  49 => 15,  44 => 13,  30 => 1,);
+        return array (  254 => 144,  250 => 143,  246 => 142,  242 => 141,  238 => 140,  180 => 84,  167 => 77,  161 => 76,  154 => 74,  148 => 72,  144 => 71,  130 => 59,  125 => 57,  121 => 56,  116 => 55,  111 => 53,  106 => 52,  104 => 51,  100 => 50,  80 => 33,  76 => 32,  65 => 23,  59 => 21,  57 => 20,  49 => 15,  44 => 13,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

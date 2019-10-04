@@ -17,6 +17,7 @@ class Post
         $column = 'pic,name,address,taste,introduction';
         $arrVal = [$pic, $name, $address, $taste, $introduction];
         if ($this->db->insert($table, $column, $arrVal)) {
+            $_SESSION['flash'] = '投稿に成功しました!';
             header('Location:http://localhost:8888/ramenApp/top.php');
             exit();
         } else {

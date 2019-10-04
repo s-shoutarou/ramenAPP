@@ -11,16 +11,15 @@ use ramenApp\lib\Session;
 use ramenApp\lib\Functions;
 use Dotenv\Dotenv;
 
-
-$loader = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loader, [
-    'cache' => Bootstrap::CACHE_DIR
-]);
-
 $dotenv = Dotenv::create(__DIR__);
 $dotenv->load();
 
-$db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), Bootstrap::LOG_PATH);
+$loader = new \Twig_Loader_Filesystem(getenv('TEMPLATE_DIR'));
+$twig = new \Twig_Environment($loader, [
+    'cache' => getenv('CACHE_DIR')
+]);
+
+$db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), getenv('LOG_PATH'));
 $login =  new Login($db);
 $ses = new Session();
 $fun = new Functions();

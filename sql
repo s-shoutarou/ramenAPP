@@ -3,9 +3,9 @@ CREATE DATABASE ramenApp;
 CREATE TABLE restaurants (
 id int unsigned not null auto_increment,
 name varchar(255) not null,
-addrtess varchar(255) not null,
+address varchar(255) not null,
 taste varchae(255) not null,
-introduction varchar(20000) not null,
+text varchar(255) not null,
 user int(100) unsigned not null ,
 primary key (id)
 );

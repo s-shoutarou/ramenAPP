@@ -10,17 +10,22 @@ use ramenApp\lib\Top;
 use ramenApp\lib\Session;
 use Dotenv\Dotenv;
 
-$loade = new \Twig_Loader_Filesystem(Bootstrap::TEMPLATE_DIR);
-$twig = new \Twig_Environment($loade, [
-    'cache' => Bootstrap::CACHE_DIR
-]);
-
 $dotenv = Dotenv::create(__DIR__);
 $dotenv->load();
 
-$db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), Bootstrap::LOG_PATH);
+$loade = new \Twig_Loader_Filesystem(getenv('TEMPLATE_DIR'));
+$twig = new \Twig_Environment($loade, [
+    'cache' => getenv('CACHE_DIR')
+]);
+
+$db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), getenv('LOG_PATH'));
 $top = new Top($db);
 $ses = new Session();
+
+$context = [];
+
+//フラッシュメッセージ
+$context['flash'] = $ses->flash();
 
 if (!empty($_POST['search'])) {
     $searchText = $_POST['search'];

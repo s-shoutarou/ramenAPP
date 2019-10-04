@@ -8,32 +8,46 @@
 
 <body>
 
-
 	<div class="form-wrapper">
 		<h1>投稿</h1>
 		<form method="post" enctype="multipart/form-data">
 			<div class=" form-item">
 				<label for="name"></label>
 				<input type="text" name="name" required="required" placeholder="店名"></input>
+				{% if emptyname|length > 0 %}
+				<p>{{emptyname}}</p>
+				{% endif %}
 			</div>
 
 			<div class="form-item">
 				<label for="adress"></label>
 				<input type="text" name="address" required="required" placeholder="住所"></input>
+				{% if emptyaddress|length > 0 %}
+				<p>{{emptyaddress}}</p>
+				{% endif %}
 			</div>
 
 			<div class="form-item">
 				<label for="taste"></label>
 				<input type="" name="taste" required="required" placeholder="味"></input>
+				{% if taste|length > 0 %}
+				<p>{{emptytaste}}</p>
+				{% endif %}
 			</div>
 
 			<div class="form-item">
 				<label for="pic"></label>
 				<input type="file" name="pic" required="required" placeholder="Pic"></input>
+				{% if emptypic|length > 0 %}
+				<p>{{emptypic}}</p>
+				{% endif %}
 			</div>
 
 			<div class="form-item">
 				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください"></textarea>
+				{% if emptyintroduction|length > 0 %}
+				<p>{{emptyintroduction}}</p>
+				{% endif %}
 			</div>
 
 			<div class="button-panel">

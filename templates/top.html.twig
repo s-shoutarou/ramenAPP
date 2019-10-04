@@ -17,7 +17,9 @@
 
 
 <body class="is-preload">
-
+	{% if flash|length > 0 %}
+	<div class="flash">{{flash}}</div>
+	{% endif %}
 
 	<!-- Wrapper -->
 	<div id="wrapper">

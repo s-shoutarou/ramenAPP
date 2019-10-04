@@ -19,6 +19,10 @@ class ComposerStaticIniteeb4f0f3666b0ba9f38d19f3200bcab1
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'F' => 
+        array (
+            'Faker\\' => 6,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
@@ -33,6 +37,10 @@ class ComposerStaticIniteeb4f0f3666b0ba9f38d19f3200bcab1
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
         'Dotenv\\' => 
         array (
