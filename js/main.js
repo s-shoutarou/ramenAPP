@@ -152,4 +152,6 @@
     position: "absolute"
   });
   $(".flash").fadeOut(5000);
+
+  //選択画像表示
 })(jQuery);

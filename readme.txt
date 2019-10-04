@@ -10,3 +10,7 @@ logout.php ログアウト画面
 post.php 投稿画面
 detail.php 詳細画面
 unsubscribe.php 退会画面
+
+ターミナルで
+./intro.sh
+を実行してログ保存ファイルと写真保存ファイルのパーミッションを777にしてからご使用ください。

@@ -34,7 +34,9 @@ $sig = new Signup($db);
 
 switch ($_POST['val']) {
     case 1:
-        $db->insert('users', 'user_name,pass', [$faker->name, $faker->password]);
+        for ($i = 1; $i < 50; $i++) {
+            $db->insert('users', 'user_name,pass', [$faker->name, $faker->password]);
+        }
         break;
     case 2:
         $pic = $faker->imageUrl($width = 640, $height = 480);

@@ -3,7 +3,6 @@
 namespace ramenApp\lib;
 
 use PDOException;
-use ramenApp\lib\CreateSQL;
 
 class PDODatabase
 {
@@ -24,8 +23,6 @@ class PDODatabase
         $this->DB_PASS = $db_pass;
 
         $this->LOG_PATH = $log_path;
-
-        $creSQL = new CreateSQL();
     }
 
     private function dbConnect($db_host, $db_name, $db_user, $db_pass)
@@ -160,6 +157,10 @@ class PDODatabase
 
     private function sqlLOG($text)
     {
+        if (!file_exists($this->LOG_PATH)) {
+            mkdir('/Applications/MAMP/htdocs/ramenApp/log', 0777);
+            touch($this->LOG_PATH);
+        }
         $text = sprintf("[日時:%s]クエリ内容:%s\n", date('Y-m-d H:i:s'), $text);
         $this->writingLOG($text);
     }
