@@ -90,7 +90,7 @@ class __TwigTemplate_13843c940eda6ed67f04dbbfaec8e7f3888d5c792b670755262d555cd76
 
 \t\t\t<div class=\"form-item\">
 \t\t\t\t<label for=\"pic\"></label>
-\t\t\t\t<input type=\"file\" name=\"pic\" required=\"required\" placeholder=\"Pic\"></input>
+\t\t\t\t<input id=\"pic\" type=\"file\" name=\"pic\" required=\"required\" placeholder=\"Pic\"></input>
 \t\t\t\t";
         // line 41
         if ((twig_length_filter($this->env, ($context["emptypic"] ?? null)) > 0)) {
@@ -101,20 +101,21 @@ class __TwigTemplate_13843c940eda6ed67f04dbbfaec8e7f3888d5c792b670755262d555cd76
 \t\t\t\t";
         }
         // line 44
-        echo "\t\t\t</div>
+        echo "\t\t\t\t<div class=\"prev\" style=\"margin-top: 10px\"></div>
+\t\t\t</div>
 
 \t\t\t<div class=\"form-item\">
 \t\t\t\t<textarea name=\"introduction\" id=\"\" cols=\"70\" rows=\"10\" placeholder=\"ラーメンに対する評価、ご感想をお書きください\"></textarea>
 \t\t\t\t";
-        // line 48
+        // line 49
         if ((twig_length_filter($this->env, ($context["emptyintroduction"] ?? null)) > 0)) {
-            // line 49
+            // line 50
             echo "\t\t\t\t<p>";
             echo twig_escape_filter($this->env, ($context["emptyintroduction"] ?? null), "html", null, true);
             echo "</p>
 \t\t\t\t";
         }
-        // line 51
+        // line 52
         echo "\t\t\t</div>
 
 \t\t\t<div class=\"button-panel\">
@@ -124,6 +125,15 @@ class __TwigTemplate_13843c940eda6ed67f04dbbfaec8e7f3888d5c792b670755262d555cd76
 
 \t\t<div class=\"form-footer\">
 \t\t</div>
+
+\t\t<script src=\"";
+        // line 62
+        echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
+        echo "js/jquery.min.js\"></script>
+\t\t<script src=\"";
+        // line 63
+        echo twig_escape_filter($this->env, twig_constant("ramenApp\\Bootstrap::APP_URL"), "html", null, true);
+        echo "js/fileprev.js\"></script>
 </body>
 
 </html>
@@ -142,7 +152,7 @@ class __TwigTemplate_13843c940eda6ed67f04dbbfaec8e7f3888d5c792b670755262d555cd76
 
     public function getDebugInfo()
     {
-        return array (  118 => 51,  112 => 49,  110 => 48,  104 => 44,  98 => 42,  96 => 41,  89 => 36,  83 => 34,  81 => 33,  74 => 28,  68 => 26,  66 => 25,  59 => 20,  53 => 18,  51 => 17,  37 => 6,  30 => 1,);
+        return array (  135 => 63,  131 => 62,  119 => 52,  113 => 50,  111 => 49,  104 => 44,  98 => 42,  96 => 41,  89 => 36,  83 => 34,  81 => 33,  74 => 28,  68 => 26,  66 => 25,  59 => 20,  53 => 18,  51 => 17,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */

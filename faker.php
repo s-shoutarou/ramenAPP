@@ -7,9 +7,6 @@ require_once 'vendor/fzaninotto/faker/src/autoload.php';
 use Faker\Factory;
 
 $faker = Factory::create('ja_JP');
-echo $faker->name;
-echo $faker->city;
-echo $faker->password;
 
 require_once dirname(__FILE__) . '/Bootstrap.class.php';
 
@@ -32,20 +29,27 @@ $twig = new \Twig_Environment($loade, [
 
 $sig = new Signup($db);
 
-switch ($_POST['val']) {
-    case 1:
-        for ($i = 1; $i < 50; $i++) {
-            $db->insert('users', 'user_name,pass', [$faker->name, $faker->password]);
-        }
-        break;
-    case 2:
-        $pic = $faker->imageUrl($width = 640, $height = 480);
-        touch('/pic/' . $pic);
-        $db->insert('restaurants', 'name,address,taste,introduction,pic', [$faker->name, $faker->city, $pic]);
+if (!empty($_POST)) {
+    switch ($_POST['val']) {
+        case 1:
+            for ($i = 1; $i < 50; $i++) {
+                $db->insert('users', 'user_name,pass', [$faker->name, $faker->password]);
+            }
+            break;
+        case 2:
+            for ($i = 1; $i < 50; $i++) {
+                $fakepic = $faker->imageUrl(640, 480, 'cats');
+                $data = file_get_contents($fakepic);
+                file_put_contents('./pic/fake' . $i . '.jpg', $data);
+                touch('/pic/' . $pic);
+                $db->insert('restaurants', 'name,address,taste,introduction,pic', [$faker->name, $faker->city, $faker->text, $faker->text, 'fake' . $i . '.jpg']);
+            }
+    }
 }
 
 $template = $twig->loadTemplate('fake.html.twig');
 $template->display([]);
+
 
 /*
 $loade = new \Twig_Loader_Filesystem(getenv('TEMPLATE_DIR'));
