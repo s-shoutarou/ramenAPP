@@ -2,12 +2,17 @@
 
 namespace ramenApp\lib;
 
+use ramenApp\lib\PDOoperation;
+
 class Unsubscribe
 {
     private $db = null;
+    private $PDOope = null;
+
     public function __construct($db)
     {
         $this->db = $db;
+        $this->PDOope = new PDOoperation($this->db);
     }
     public function unsubscribe($user_name, $pass)
     {
@@ -25,7 +30,7 @@ class Unsubscribe
             $where = ['id'];
             $whereVal = [$user_id];
             $del_flg = 1;
-            if ($this->db->accountManage($table, $col, $where, $whereVal, $del_flg)) {
+            if ($this->PDOope->accountManage($table, $col, $where, $whereVal, $del_flg)) {
                 header('Location:http://localhost:8888/ramenApp/logout.php');
                 exit();
             } else {

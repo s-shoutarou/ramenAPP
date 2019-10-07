@@ -18,12 +18,11 @@ class Login
         $where = ['user_name', 'delete_flg'];
         $arrVal = [$user_name, 0];
         $result = $this->db->select($table, $column, $where, $arrVal);
-
         if (!empty($result)) {
             $hash_pass = $result[0]['pass'];
             $user_id = $result[0]['id'];
         } else {
-            return false;
+            return 'どちらかの入力内容が間違っています';
         }
 
         if (password_verify($user_pass, $hash_pass)) {

@@ -32,11 +32,11 @@ if (!empty($_POST)) {
     $pass = $_POST['pass'];
     $context = $fun->EmptyCheck($user_name, $pass);
     if (empty($context)) {
-        $result = $login->userLogin($user_name, $pass);
+        $context['err_msg'] = $login->userLogin($user_name, $pass);
     }
 }
 
-$context = [];
+
 
 $template = $twig->loadTemplate('login.html.twig');
 $template->display($context);

@@ -4,7 +4,6 @@ namespace ramenApp;
 
 require_once dirname(__FILE__) . '/Bootstrap.class.php';
 
-use ramenApp\Bootstrap;
 use ramenApp\lib\PDODatabase;
 use ramenApp\lib\Session;
 use ramenApp\lib\Unsubscribe;

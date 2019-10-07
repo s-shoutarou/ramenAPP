@@ -42,6 +42,8 @@ class Functions
         foreach ($post as $key => $val) {
             if (empty($post[$key])) {
                 $context['empty' . $key] = $err_msg[$key] . 'を入力してください';
+            } else {
+                $context[$key] = $val;
             }
         }
         return $context;
@@ -56,41 +58,5 @@ class Functions
         };
         move_uploaded_file($pic['tmp_name'], './pic/' . $fname);
         return $fname;
-    }
-    //以下未使用
-    public function search($table, $column, $where, $arrVal = [], $searchSwitch = 0, $all_flg = 0)
-    {
-        $data = [];
-        $sql = $this->createSQL('search', $table, $column, $where, $all_flg, $searchSwitch, $arrVal);
-        $stmt = $this->dbh->prepare($sql);
-        foreach ($arrVal as $key => $val) {
-            array_push($data, '%' . $val . '%');
-        }
-        $resultData = [];
-        if ($stmt->execute($data)) {
-            while ($result = $stmt->fetchAll(\PDO::FETCH_ASSOC)) {
-                array_push($resultData, $result);
-            }
-        } else {
-            $this->catchError($stmt->errorInfo());
-        }
-        return $resultData;
-    }
-
-    public function accountManage($table, $column, $where, $whereVal, $del_flg = 0)
-    {
-        $where_txt = [];
-        foreach ($where as $key => $val) {
-            array_push($where_txt, $val . '=?');
-        }
-        $where_txt = implode($where_txt, ' AND ');
-        $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = ' . $del_flg . ' WHERE ' . $where_txt;
-        $this->sqlLOG($sql);
-        $stmt = $this->dbh->prepare($sql);
-        if ($stmt->execute($whereVal)) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }

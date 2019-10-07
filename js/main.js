@@ -148,8 +148,7 @@
     width: "100%",
     "line-height": "100px",
     "text-align": "center",
-    "background-color": "#f2849e",
-    position: "absolute"
+    "background-color": "#f2849e"
   });
   $(".flash").fadeOut(5000);
 })(jQuery);
