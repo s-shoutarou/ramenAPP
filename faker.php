@@ -42,7 +42,7 @@ if (!empty($_POST)) {
                 $data = file_get_contents($fakepic);
                 file_put_contents('./pic/fake' . $i . '.jpg', $data);
                 touch('/pic/' . $pic);
-                $db->insert('restaurants', 'name,address,taste,introduction,pic', [$faker->name, $faker->city, $faker->text, $faker->text, 'fake' . $i . '.jpg']);
+                $db->insert('restaurants', 'name,address,taste,text,pic', [$faker->name, $faker->city, $faker->text, $faker->text, 'fake' . $i . '.jpg']);
             }
     }
 }

@@ -22,7 +22,7 @@ class Login
             $hash_pass = $result[0]['pass'];
             $user_id = $result[0]['id'];
         } else {
-            return 'どちらかの入力内容が間違っています';
+            return 'アカウントが存在しないか、どちらかの入力内容が間違っています';
         }
 
         if (password_verify($user_pass, $hash_pass)) {

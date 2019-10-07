@@ -25,6 +25,7 @@ $ses = new Session();
 $fun = new Functions();
 
 $context = [];
+$postData = [];
 
 if (!empty($_POST)) {
     $postData = $_POST;
@@ -38,11 +39,17 @@ if (!empty($_FILES)) {
     $context['pic'] = '写真の選択は必須です';
 }
 
+
 if (empty($context) && !empty($postData)) {
     extract($postData);
-    $post->posting($fname, $name, $address, $taste, $introduction);
+    $post->posting($fname, $name, $address, $taste, $text);
     echo '投稿したよ';
+} elseif (!empty($context)) {
+    foreach ($postData as $key => $val) {
+        $context[$key] = $val;
+    }
 }
+
 
 $template = $twig->loadTemplate('post.html.twig');
 $template->display($context);

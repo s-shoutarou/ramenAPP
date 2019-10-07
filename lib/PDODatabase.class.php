@@ -78,7 +78,7 @@ class PDODatabase
         }
     }
 
-    public function createSQL($type = '', $table = '', $column = '', $where = [], $option = []/* $searchVal = []*/)
+    public function createSQL($type = '', $table = '', $column = '', $where = [], $option = [])
     {
 
         if ($type == 'select') {

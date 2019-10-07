@@ -45,9 +45,9 @@
 			</div>
 
 			<div class="form-item">
-				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{introduction}}{% endif %}"></textarea>
-				{% if emptyintroduction|length > 0 %}
-				<p>{{emptyintroduction}}</p>
+				<textarea name="text" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{text}}{% endif %}"></textarea>
+				{% if emptytext|length > 0 %}
+				<p>{{emptytext}}</p>
 				{% endif %}
 			</div>
 
