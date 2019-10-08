@@ -80,40 +80,43 @@ class PDODatabase
 
     public function createSQL($type = '', $table = '', $column = '', $where = [], $option = [])
     {
-
-        if ($type == 'select') {
-            $where_txt = [];
-            foreach ($where as $key => $val) {
-                array_push($where_txt, $val . '=?');
-            }
-            $where_txt = implode($where_txt, ' AND ');
-            if ($option["all_flg"] == 0) {
-                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where_txt;
-                $this->sqlLOG('select:' . $sql);
-            } elseif ($option["all_flg"] == 1) {
-                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' ORDER BY id DESC';
-                $this->sqlLOG('select:' . $sql);
-            }
-        } elseif ($type == 'search') {
-            $like_text = [];
-            for ($i = 0; $i < $option['searchVal']; $i++) {
-                array_push($like_text, ' ?');
-            }
-            if (($option['searchVal']) == 1) {
-                $where = array_shift($where);
-                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE ?';
-                $this->sqlLOG('search・OneThing:' . $sql);
-            } elseif ($option['searchSwitch'] == 0) {
-                $where = array_shift($where);
-                $like_text = implode($like_text, ' AND ' . $where . ' LIKE');
-                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
-                $this->sqlLOG('search・AND:' . $sql);
-            } elseif ($option['searchSwitch'] == 1) {
-                $where = array_shift($where);
-                $like_text = implode($like_text, ' OR ' . $where . ' LIKE');
-                $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
-                $this->sqlLOG('search・OR:' . $sql);
-            }
+        switch ($type) {
+            case 'select':
+                $where_txt = [];
+                foreach ($where as $key => $val) {
+                    array_push($where_txt, $val . '=?');
+                }
+                $where_txt = implode($where_txt, ' AND ');
+                if ($option["all_flg"] == 0) {
+                    $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where_txt;
+                    $this->sqlLOG('select:' . $sql);
+                } elseif ($option["all_flg"] == 1) {
+                    $sql = 'SELECT ' . $column . ' FROM ' . $table . ' ORDER BY id DESC';
+                    $this->sqlLOG('select:' . $sql);
+                }
+                break;
+            case 'search': {
+                    $like_text = [];
+                    for ($i = 0; $i < $option['searchVal']; $i++) {
+                        array_push($like_text, ' ?');
+                    }
+                    if (($option['searchVal']) == 1) {
+                        $where = array_shift($where);
+                        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE ?';
+                        $this->sqlLOG('search・OneThing:' . $sql);
+                    } elseif ($option['searchSwitch'] == 0) {
+                        $where = array_shift($where);
+                        $like_text = implode($like_text, ' AND ' . $where . ' LIKE');
+                        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
+                        $this->sqlLOG('search・AND:' . $sql);
+                    } elseif ($option['searchSwitch'] == 1) {
+                        $where = array_shift($where);
+                        $like_text = implode($like_text, ' OR ' . $where . ' LIKE');
+                        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
+                        $this->sqlLOG('search・OR:' . $sql);
+                    }
+                    break;
+                }
         }
         $this->sqlLOG('ResultSQL:' . $sql);
         return $sql;

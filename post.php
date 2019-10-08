@@ -9,6 +9,7 @@ use ramenApp\lib\Session;
 use ramenApp\lib\PDODatabase;
 use ramenApp\lib\Post;
 use ramenApp\lib\Functions;
+use ramenApp\lib\PDOoperation;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::create(__DIR__);
@@ -23,9 +24,12 @@ $db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), g
 $post = new Post($db);
 $ses = new Session();
 $fun = new Functions();
+$PDOope = new PDOoperation($db);
 
 $context = [];
 $postData = [];
+
+$PDOope->getTaste();
 
 if (!empty($_POST)) {
     $postData = $_POST;
@@ -38,7 +42,6 @@ if (!empty($_FILES)) {
 } else {
     $context['pic'] = '写真の選択は必須です';
 }
-
 
 if (empty($context) && !empty($postData)) {
     extract($postData);

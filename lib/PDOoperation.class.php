@@ -48,4 +48,8 @@ class PDOoperation
             return false;
         }
     }
+    public function getTaste()
+    {
+        $sql = 'SELECT tastetxt';
+    }
 }
