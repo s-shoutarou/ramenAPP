@@ -15,7 +15,12 @@
 		<link rel="stylesheet" href="{{constant('ramenApp\\Bootstrap::APP_URL')}}css/assets/css/noscript.css" /></noscript>
 </head>
 
+
 <body class="is-preload">
+	{% if flash|length > 0 %}
+	<div class="flash">{{flash}}</div>
+	{% endif %}
+
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -47,7 +52,7 @@
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}login.php">Login</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}signup.php">Signup</a></li>
 				{% else %}
-				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}myRestaurant.php">MyRestaurant</a></li>
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}yourRestaurant.php">YourRestaurant</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}post.php">Post</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}logout.php">Logout</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}unsubscribe.php">Unsubscribe</a></li>
@@ -55,14 +60,29 @@
 			</ul>
 		</nav>
 
-
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<h1>{{dataArr.name}}</h1>
-				<h2> 味:{{dataArr.taste}}</h2>
-				<span class="image main"><img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/pic/{{dataArr.pic}}" alt="" width="900" height="600" /></span>
-				<p>{{dataArr.text}}</p>
+				<header>
+					<h1>This is Ramen-APP! Skina ramen wo, shoukai sitene!!<br />
+						Responsiv nimo battiri taiou!!</h1>
+					<p>Etiam quis viverra lorem, in semper lorem. Sed nisl arcu euismod sit amet nisi euismod sed cursus arcu elementum ipsum arcu vivamus quis venenatis orci lorem ipsum et magna feugiat veroeros aliquam. Lorem ipsum dolor sit amet nullam dolore.</p>
+				</header>
+				<section class="tiles">
+					{% for key,data in dataArr %}
+					<article class="style{{random(5) + 1}}">
+						<span class="image">
+							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}pic/{{data.pic}}" alt="" width="360" height="270" />
+						</span>
+						<a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}detail.php?id={{data.id}}">
+							<h2>{{data.name}}</h2>
+							<div class="content">
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
+						</a>
+					</article>
+					{% endfor %}
+				</section>
 			</div>
 		</div>
 
@@ -71,21 +91,28 @@
 			<div class="inner">
 				<section>
 					<h2>Get in touch</h2>
-					<form method="post" action="#">
+					<form method="post" action="">
 						<div class="fields">
-							<div class="field half">
-								<input type="text" name="name" id="name" placeholder="Name" />
-							</div>
-							<div class="field half">
-								<input type="email" name="email" id="email" placeholder="Email" />
-							</div>
 							<div class="field">
-								<textarea name="message" id="message" placeholder="Message"></textarea>
+								<textarea name="search" id="search" placeholder="Search"></textarea>
 							</div>
 						</div>
 						<ul class="actions">
-							<li><input type="submit" value="Send" class="primary" /></li>
+							<li><input type="submit" value="Search" class="primary" /></li>
+							<li>
+								<div class="col-4 col-12-small">
+									<input type="radio" id="AND" name="ANDOR" value=0 checked>
+									<label for="AND">AND</label>
+								</div>
+							</li>
+							<li>
+								<div class="col-4 col-12-small">
+									<input type="radio" id="OR" name="ANDOR" value=1>
+									<label for="OR">OR</label>
+								</div>
+							</li>
 						</ul>
+
 					</form>
 				</section>
 				<section>

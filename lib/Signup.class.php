@@ -20,13 +20,13 @@ class Signup
         $where = ['user_name'];
         $whereVal = [$user_name];
         $result = $this->db->select($table, $col, $where, $whereVal);
-
-        $result = array_shift($result);
-
-        if (!empty($result['user_name']) && $result['delete_flg'] == 0) {
-            return false;
+        foreach ($result as $Key => $val) {
+            if ($val['delete_flg'] == 0) {
+                return false;
+            }
         }
-        if (count($result['user_name']) == 1 && $result['delete_flg'] == 1) {
+        if ($result[0]['user_name'] == $user_name && $result[0]['delete_flg'] == 1) {
+
             //過去に登録していたユーザーなら復活
             $table = 'users';
             $column = 'id,pass';

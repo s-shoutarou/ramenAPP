@@ -42,7 +42,8 @@ if (!empty($_FILES)) {
 
 if (empty($context) && !empty($postData)) {
     extract($postData);
-    $post->posting($fname, $name, $address, $taste, $text);
+    $user_id = $_SESSION['user_id'];
+    $post->posting($fname, $name, $address, $taste, $text, $user_id);
     echo '投稿したよ';
 } elseif (!empty($context)) {
     foreach ($postData as $key => $val) {

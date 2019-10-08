@@ -18,8 +18,8 @@ class Unsubscribe
     {
         $table = 'users';
         $column = 'id,pass';
-        $where = ['user_name'];
-        $arrVal = [$user_name];
+        $where = ['user_name', 'delete_flg'];
+        $arrVal = [$user_name, 0];
         $result = $this->db->select($table, $column, $where, $arrVal);
 
         $hash_pass = $result[0]['pass'];

@@ -37,13 +37,22 @@ if (!empty($_POST)) {
             }
             break;
         case 2:
+            //ランダム取得
+            $id = $db->select('users', 'id', [], [], ['all_flg' => 1]);
+            $id = $id[0];
+            $allid = [];
+            for ($ii = 0; $ii < count($id); $ii++) {
+                $allid[$ii] = $id[$ii]['id'];
+            }
             for ($i = 0; $i < 50; $i++) {
                 $fakepic = $faker->imageUrl(640, 480, 'cats');
                 $data = file_get_contents($fakepic);
-                file_put_contents('./pic/fake' . $i . '.jpg', $data);
-                touch('/pic/' . $pic);
-                $db->insert('restaurants', 'name,address,taste,text,pic', [$faker->name, $faker->city, $faker->text, $faker->text, 'fake' . $i . '.jpg']);
+                $pic = 'fake'  . date("Y-m-dH:i:s") . '.jpg';
+                file_put_contents('./pic/'  . $pic, $data);
+                $id = $allid[array_rand($allid)];
+                $db->insert('restaurants', 'pic,name,address,taste,text,user', [$pic, $faker->name, $faker->city, $faker->text, $faker->text, $id]);
             }
+            break;
     }
 }
 
