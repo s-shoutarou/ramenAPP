@@ -50,7 +50,7 @@ if (!empty($_POST)) {
                 $pic = 'fake'  . date("Y-m-dH:i:s") . '.jpg';
                 file_put_contents('./pic/'  . $pic, $data);
                 $id = $allid[array_rand($allid)];
-                $db->insert('restaurants', 'pic,name,address,taste,text,user', [$pic, $faker->name, $faker->city, $faker->text, $faker->text, $id]);
+                $db->insert('restaurants', 'pic,name,address,taste,introduction,user', [$pic, $faker->name, $faker->city, $faker->text, $faker->text, $id]);
             }
             break;
     }

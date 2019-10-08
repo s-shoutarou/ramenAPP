@@ -14,7 +14,7 @@ class Post
     public function posting($pic = '', $name = '', $address = '', $taste = '', $text = '', $user_id = '')
     {
         $table = 'restaurants';
-        $column = 'pic,name,address,taste,text,user';
+        $column = 'pic,name,address,taste,introduction,user';
         $arrVal = [$pic, $name, $address, $taste, $text, $user_id];
         if ($this->db->insert($table, $column, $arrVal)) {
             $_SESSION['flash'] = '投稿に成功しました!';

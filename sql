@@ -6,7 +6,7 @@ name varchar(255) not null,
 address varchar(255) not null,
 taste varchar(255) not null,
 pic varchar(255) not null,
-text text(255) not null,
+introduction text(255) not null,
 user int(100) unsigned not null ,
 primary key (id)
 );
