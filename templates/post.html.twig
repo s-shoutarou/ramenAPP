@@ -29,7 +29,12 @@
 
 			<div class="form-item">
 				<label for="taste"></label>
-				<input type="" name="taste" required="required" placeholder="味" value="{% if name|length >0 %}{{taste}}{% endif %}"></input>
+				<select name="taste" required="required" placeholder="味" class="taste">
+					<option value="0">味を選択して下さい</option>
+					{% for key, value in tastes %}
+					<option value="value.id">{{value.taste}}</option>
+					{% endfor %}
+				</select>
 				{% if taste|length > 0 %}
 				<p>{{emptytaste}}</p>
 				{% endif %}
@@ -46,8 +51,8 @@
 
 			<div class="form-item">
 				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{text}}{% endif %}"></textarea>
-				{% if emptytext|length > 0 %}
-				<p>{{emptytext}}</p>
+				{% if emptyintroduction|length > 0 %}
+				<p>{{emptyintroduction}}</p>
 				{% endif %}
 			</div>
 
