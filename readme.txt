@@ -11,7 +11,6 @@ post.php 投稿画面
 detail.php 詳細画面
 unsubscribe.php 退会画面
 
-
 logファイル、picファイル、cacheファイルのパーミッションを777にしてからご使用ください。
 ターミナルで
 ./intro.sh
