@@ -15,7 +15,7 @@ class myRestaurant
     public function getMyRestaurant($user_id)
     {
         $table = 'restaurants';
-        $column = 'name,pic';
+        $column = 'id,name,pic';
         $where = ['user'];
         $arrVal = [$user_id];
         $result = $this->db->select($table, $column, $where, $arrVal);

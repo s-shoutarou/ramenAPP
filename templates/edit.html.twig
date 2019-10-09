@@ -9,21 +9,21 @@
 <body>
 
 	<div class="form-wrapper">
-		<h1>投稿</h1>
+		<h1>編集</h1>
 		<form method="post" enctype="multipart/form-data">
 			<div class=" form-item">
 				<label for="name"></label>
-				<input type="text" name="name" required="required" placeholder="店名" value="{% if name|length >0 %}{{name}}{% endif %}"></input>
-				{% if emptyname|length > 0 %}
-				<p>{{emptyname}}</p>
+				<input type="text" name="name" required="required" placeholder="店名" value="{% if detail.name|length >0 %}{{detail.name}}{% endif %}"></input>
+				{% if err_msg.emptyname|length > 0 %}
+				<p>{{err_msg.emptyname}}</p>
 				{% endif %}
 			</div>
 
 			<div class="form-item">
 				<label for="address"></label>
-				<input type="text" name="address" required="required" placeholder="住所" value="{% if address|length >0 %}{{address}}{% endif %}"></input>
-				{% if emptyaddress|length > 0 %}
-				<p>{{emptyaddress}}</p>
+				<input type="text" name="address" required="required" placeholder="住所" value="{% if detail.address|length >0 %}{{detail.address}}{% endif %}"></input>
+				{% if err_msg.emptyaddress|length > 0 %}
+				<p>{{err_msg.emptyaddress}}</p>
 				{% endif %}
 			</div>
 
@@ -32,7 +32,7 @@
 				<select name="taste" required="required" placeholder="味" class="taste">
 					<option value="0">味を選択して下さい</option>
 					{% for key, value in tastes %}
-					{% if taste == value.id %}
+					{% if value.taste == detail.taste %}
 					<option value="{{value.id}}" selected>{{value.taste}}</option>
 					{% else %}
 					<option value="{{value.id}}">{{value.taste}}</option>
@@ -40,23 +40,24 @@
 					{% endfor %}
 				</select>
 				{% if taste|length > 0 %}
-				<p>{{emptytaste}}</p>
+				<p>{{err_msg.emptytaste}}</p>
 				{% endif %}
 			</div>
 
 			<div class="form-item">
+				<p>画像を変更する場合は選択して下さい</p>
 				<label for="pic"></label>
-				<input id="pic" type="file" name="pic" required="required" placeholder="Pic"></input>
-				{% if emptypic|length > 0 %}
-				<p>{{emptypic}}</p>
+				<input id="pic" type="file" name="pic" placeholder="Pic"></input>
+				{% if err_msg.emptypic|length > 0 %}
+				<p>{{err_msg.emptypic}}</p>
 				{% endif %}
-				<div class="prev" style="margin-top: 10px"></div>
+				<div class="prev" style="margin-top: 10px"><img width='150px' height='150px' src=" {{constant('ramenApp\\Bootstrap::APP_URL')}}pic/{{detail.pic}}" alt=""></div>
 			</div>
 
 			<div class="form-item">
-				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{introduction}}{% endif %}"></textarea>
-				{% if emptyintroduction|length > 0 %}
-				<p>{{emptyintroduction}}</p>
+				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください">{% if detail.introduction|length >0 %}{{detail.introduction}}{% endif %}</textarea>
+				{% if err_msg.emptyintroduction|length > 0 %}
+				<p>{{err_msg.emptyintroduction}}</p>
 				{% endif %}
 			</div>
 

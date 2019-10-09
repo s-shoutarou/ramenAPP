@@ -52,7 +52,7 @@
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}login.php">Login</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}signup.php">Signup</a></li>
 				{% else %}
-				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}yourRestaurant.php">YourRestaurant</a></li>
+				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}myRestaurant.php">myRestaurant</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}post.php">Post</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}logout.php">Logout</a></li>
 				<li><a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}unsubscribe.php">Unsubscribe</a></li>
@@ -74,7 +74,7 @@
 						<span class="image">
 							<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}pic/{{data.pic}}" alt="" width="360" height="270" />
 						</span>
-						<a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}detail.php?id={{data.id}}">
+						<a href="{{constant('ramenApp\\Bootstrap::APP_URL')}}edit.php?id={{data.id}}">
 							<h2>{{data.name}}</h2>
 							<div class="content">
 								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>

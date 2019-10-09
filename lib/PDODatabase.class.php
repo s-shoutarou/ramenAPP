@@ -78,10 +78,21 @@ class PDODatabase
         }
     }
 
+    public function update($table = '', $column = '', $where = [], $arrVal = [])
+    {
+        $sql = $this->createSQL('update', $table, $column, $where);
+        $stmt = $this->dbh->prepare($sql);
+        if ($stmt->execute($arrVal)) {
+            header('Location:myrestaurant.php');
+        } else {
+            $this->catchError($stmt->errorInfo());
+        }
+    }
+
     public function createSQL($type = '', $table = '', $column = '', $where = [], $option = [])
     {
         switch ($type) {
-            case 'select':
+            case "select":
                 $where_txt = [];
                 foreach ($where as $key => $val) {
                     array_push($where_txt, $val . '=?');
@@ -95,49 +106,37 @@ class PDODatabase
                     $this->sqlLOG('select:' . $sql);
                 }
                 break;
-            case 'search': {
-                    $like_text = [];
-                    for ($i = 0; $i < $option['searchVal']; $i++) {
-                        array_push($like_text, ' ?');
-                    }
-                    if (($option['searchVal']) == 1) {
-                        $where = array_shift($where);
-                        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE ?';
-                        $this->sqlLOG('search・OneThing:' . $sql);
-                    } elseif ($option['searchSwitch'] == 0) {
-                        $where = array_shift($where);
-                        $like_text = implode($like_text, ' AND ' . $where . ' LIKE');
-                        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
-                        $this->sqlLOG('search・AND:' . $sql);
-                    } elseif ($option['searchSwitch'] == 1) {
-                        $where = array_shift($where);
-                        $like_text = implode($like_text, ' OR ' . $where . ' LIKE');
-                        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
-                        $this->sqlLOG('search・OR:' . $sql);
-                    }
-                    break;
+            case "search":
+                $like_text = [];
+                for ($i = 0; $i < $option['searchVal']; $i++) {
+                    array_push($like_text, ' ?');
                 }
+                if (($option['searchVal']) == 1) {
+                    $where = array_shift($where);
+                    $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE ?';
+                    $this->sqlLOG('search・OneThing:' . $sql);
+                } elseif ($option['searchSwitch'] == 0) {
+                    $where = array_shift($where);
+                    $like_text = implode($like_text, ' AND ' . $where . ' LIKE');
+                    $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
+                    $this->sqlLOG('search・AND:' . $sql);
+                } elseif ($option['searchSwitch'] == 1) {
+                    $where = array_shift($where);
+                    $like_text = implode($like_text, ' OR ' . $where . ' LIKE');
+                    $sql = 'SELECT ' . $column . ' FROM ' . $table . ' WHERE ' . $where . ' LIKE' . $like_text . ' ORDER BY id DESC';
+                    $this->sqlLOG('search・OR:' . $sql);
+                }
+                break;
+            case 'update':
+                $where_txt = array_shift($where);
+                $sql = 'UPDATE ' . $table . ' SET ' . $column . ' WHERE id=' . $where_txt;
+                break;
         }
+
         $this->sqlLOG('ResultSQL:' . $sql);
         return $sql;
     }
 
-    public function accountManage($table, $column, $where, $whereVal, $del_flg = 0)
-    {
-        $where_txt = [];
-        foreach ($where as $key => $val) {
-            array_push($where_txt, $val . '=?');
-        }
-        $where_txt = implode($where_txt, ' AND ');
-        $sql = 'UPDATE ' . $table . ' SET ' . $column . ' = ' . $del_flg . ' WHERE ' . $where_txt;
-        $this->sqlLOG($sql);
-        $stmt = $this->dbh->prepare($sql);
-        if ($stmt->execute($whereVal)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function catchError($errArr = [])
     {
