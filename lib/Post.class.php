@@ -11,6 +11,19 @@ class Post
         $this->db = $db;
     }
 
+    public function getTaste()
+    {
+        $table = 'tastes';
+        $column = 'id,taste';
+        $where = [];
+        $arrVal = [];
+        $option = ['all_flg' => 1];
+        $r = $this->db->select($table, $column, $where, $arrVal, $option);
+        $r = array_shift($r);
+        $r = array_reverse($r);
+        return $r;
+    }
+
     public function posting($pic = '', $name = '', $address = '', $taste = '', $text = '', $user_id = '')
     {
         $table = 'restaurants';

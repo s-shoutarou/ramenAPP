@@ -32,7 +32,7 @@
 				<select name="taste" required="required" placeholder="味" class="taste">
 					<option value="0">味を選択して下さい</option>
 					{% for key, value in tastes %}
-					<option value="value.id">{{value.taste}}</option>
+					<option value="{{value.id}}">{{value.taste}}</option>
 					{% endfor %}
 				</select>
 				{% if taste|length > 0 %}

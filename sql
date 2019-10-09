@@ -19,4 +19,15 @@ delete_flg int(1) not null default 0,
 primary key (id)
 );
 
+CREATE TABLE tastes(
+    id int unsigned not null auto_increment,
+    taste varchar(255) not null,
+    primary key (id)
+);
 
+INSERT INTO tastes (taste) VALUES ("しょうゆ");
+INSERT INTO tastes(taste) VALUES ("しお");
+INSERT INTO tastes (taste) VALUES ("とんこつ");
+INSERT INTO tastes (taste) VALUES ("家系");
+INSERT INTO tastes (taste) VALUES ("二郎");
+INSERT INTO tastes (taste) VALUES ("その他");

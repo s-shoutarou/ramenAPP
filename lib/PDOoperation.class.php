@@ -48,8 +48,21 @@ class PDOoperation
             return false;
         }
     }
-    public function getTaste()
+
+    public function getDataDetail($table, $column, $where, $arrVal)
     {
-        $sql = 'SELECT tastetxt';
+        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' INNER JOIN tastes ON ' . $table . '.taste = tastes.id WHERE ' . $table . '.id=?';
+        $this->db->sqlLOG($sql);
+        $stmt = $this->db->getDbh()->prepare($sql);
+        $resultData = [];
+        if ($stmt->execute($arrVal)) {
+            while ($result = $stmt->fetchAll(\PDO::FETCH_ASSOC)) {
+                array_push($resultData, $result);
+            }
+        } else {
+            $this->db->catchError($stmt->errorInfo());
+        }
+        $resultData = array_shift($resultData);
+        return $resultData;
     }
 }

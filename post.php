@@ -29,8 +29,6 @@ $PDOope = new PDOoperation($db);
 $context = [];
 $postData = [];
 
-$PDOope->getTaste();
-
 if (!empty($_POST)) {
     $postData = $_POST;
     $context = $fun->emptyCheckPost($postData);
@@ -54,6 +52,7 @@ if (empty($context) && !empty($postData)) {
     }
 }
 
+$context['tastes'] = $post->getTaste();
 
 $template = $twig->loadTemplate('post.html.twig');
 $template->display($context);
