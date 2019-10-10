@@ -55,6 +55,22 @@
 			</div>
 
 			<div class="form-item">
+				<p>煙草について</p>
+				<label for="smoke"></label>
+				{% if detail.smoke == '禁煙' %}
+				<input type="radio" name="smoke" value="禁煙" class="detail-radio" checked>禁煙
+				<input type="radio" name="smoke" value="喫煙席有" class="detail-radio">喫煙席有
+				{% endif %}
+				{% if detail.smoke == '喫煙席有' %}
+				<input type="radio" name="smoke" value="禁煙" class="detail-radio">禁煙
+				<input type="radio" name="smoke" value="喫煙席有" class="detail-radio" checked>喫煙席有
+				{% endif %}
+			</div>
+
+
+
+
+			<div class="form-item">
 				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください">{% if detail.introduction|length >0 %}{{detail.introduction}}{% endif %}</textarea>
 				{% if err_msg.emptyintroduction|length > 0 %}
 				<p>{{err_msg.emptyintroduction}}</p>

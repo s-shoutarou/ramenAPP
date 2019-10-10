@@ -51,7 +51,8 @@ class PDOoperation
 
     public function getDataDetail($table, $column, $where, $arrVal)
     {
-        $sql = 'SELECT ' . $column . ' FROM ' . $table . ' INNER JOIN tastes ON ' . $table . '.taste = tastes.id WHERE ' . $table . '.id=?';
+        $sql = 'SELECT ' . $column . ' FROM ' . $table
+            . ' INNER JOIN tastes ON ' . $table . '.taste = tastes.id WHERE ' . $table . '.id=?';
         $this->db->sqlLOG($sql);
         $stmt = $this->db->getDbh()->prepare($sql);
         $resultData = [];
@@ -64,5 +65,31 @@ class PDOoperation
         }
         $resultData = array_shift($resultData);
         return $resultData;
+    }
+
+    public function getDataOption($table, $column, $where, $arrVal)
+    {
+        $resultData = [];
+        $returnData = [];
+        for ($i = 0; $i < 10; $i++) {
+            $in = $i + 1;
+            $sql = 'SELECT ' . $column . ' FROM ' . $table
+                . ' INNER JOIN option_info ON ' . $table . '.option_id' . $in . ' = option_info.id WHERE ' . $table . '.id=?';
+            $this->db->sqlLOG($sql);
+            $stmt = $this->db->getDbh()->prepare($sql);
+            if ($stmt->execute($arrVal)) {
+                while ($result = $stmt->fetchAll(\PDO::FETCH_ASSOC)) {
+                    array_push($resultData, $result);
+                }
+            } else {
+                $this->db->catchError($stmt->errorInfo());
+            }
+            if (!empty($resultData)) {
+                $rd = array_shift($resultData);
+                $rd = array_shift($rd);
+                $returnData[$i] = $rd['text'];
+            }
+        }
+        return $returnData;
     }
 }

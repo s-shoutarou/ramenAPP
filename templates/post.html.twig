@@ -54,6 +54,20 @@
 			</div>
 
 			<div class="form-item">
+				<p>煙草について</p>
+				<label for="smoke"><input type="radio" name="smoke" value="禁煙" class="detail-radio" checked>禁煙</label>
+				<label for="smoke"><input type="radio" name="smoke" value="喫煙席有" class="detail-radio">喫煙席有</label>
+			</div>
+
+			<div class="form-item option-form">
+				<p>その他の情報</p>
+				{%for key,value in options%}
+				<label class="option-label"><input class="option" type="checkbox" name="option[]" value="{{value.id}}">{{value.text}}</label>
+				{% endfor %}
+			</div>
+
+
+			<div class="form-item">
 				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{introduction}}{% endif %}"></textarea>
 				{% if emptyintroduction|length > 0 %}
 				<p>{{emptyintroduction}}</p>
@@ -61,15 +75,15 @@
 			</div>
 
 			<div class="button-panel">
-				<input type="submit" class="button" title="post" value="投稿する"></input>
+				<input type="submit" class="button post-button" title="post" value="投稿する"></input>
 			</div>
 		</form>
+	</div>
+	<div class="form-footer">
+	</div>
 
-		<div class="form-footer">
-		</div>
-
-		<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/jquery.min.js"></script>
-		<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/fileprev.js"></script>
+	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/jquery.min.js"></script>
+	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/fileprev.js"></script>
 </body>
 
 </html>

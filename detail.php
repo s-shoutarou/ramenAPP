@@ -19,7 +19,7 @@ $twig = new \Twig_Environment($loade, [
 ]);
 
 $db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), getenv('LOG_PATH'));
-$top = new Detail($db);
+$dit = new Detail($db);
 $ses = new Session();
 
 if (!empty($_GET['id']) && $_GET['id'] > 0) {
@@ -28,7 +28,9 @@ if (!empty($_GET['id']) && $_GET['id'] > 0) {
     header('Location:top.php');
 }
 
-$context['dataArr'] = $top->getDetail($id);
+$context['dataArr'] = $dit->getDetail($id);
+$context['optionArr'] = $dit->getOption($id);
+
 (!empty($_SESSION['user_id'])) ? $context['session'] = $_SESSION : '';
 
 $template = $twig->loadTemplate('detail.html.twig');

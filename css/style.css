@@ -112,3 +112,27 @@ form {
   transition: border-color 0.3s;
   width: 100%;
 }
+
+.detail-radio {
+  width: 5% !important;
+}
+
+.option-label {
+  display: block;
+  float: left;
+  margin: 0 10px;
+  font-size: 15px;
+}
+.option-form {
+  height: 0px !important;
+}
+.option-form input {
+  height: 15px;
+}
+textarea {
+  margin-top: 10px;
+}
+
+.post-button {
+  margin-bottom: 15px;
+}

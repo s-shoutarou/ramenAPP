@@ -44,7 +44,9 @@ if (!empty($_FILES)) {
 if (empty($context) && !empty($postData)) {
     extract($postData);
     $user_id = $_SESSION['user_id'];
-    $post->posting($fname, $name, $address, $taste, $introduction, $user_id);
+    $options['option'] = ['smoke' => $smoke];
+    $options['option'] = array_merge($options['option'], $_POST['option']);
+    $post->posting($fname, $name, $address, $taste, $introduction, $user_id, $options);
     echo '投稿したよ';
 } elseif (!empty($context)) {
     foreach ($postData as $key => $val) {
@@ -53,6 +55,7 @@ if (empty($context) && !empty($postData)) {
 }
 
 $context['tastes'] = $post->getTaste();
+$context['options'] = $post->getOption();
 
 $template = $twig->loadTemplate('post.html.twig');
 $template->display($context);

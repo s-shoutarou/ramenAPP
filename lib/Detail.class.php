@@ -27,4 +27,13 @@ class Detail
         }
         return $r;
     }
+    public function getOption($id)
+    {
+        $table = 'restaurants';
+        $column = '*';
+        $where = ['id'];
+        $arrVal = [$id];
+        $r = $this->PDOope->getDataOption($table, $column, $where, $arrVal);
+        return $r;
+    }
 }

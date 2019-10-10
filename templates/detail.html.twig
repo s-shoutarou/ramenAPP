@@ -60,8 +60,13 @@
 		<div id="main">
 			<div class="inner">
 				<h1>{{dataArr.name}}</h1>
-				<h2> 味:{{dataArr.taste}}</h2>
+				<h2 style="margin: 0"> 味:{{dataArr.taste}}</h2>
+				{% for key,value in optionArr %}
+				<span>・{{value}}</span>
+				{% endfor %}
+				<p style="margin: 0">煙草:{{dataArr.smoke}}</p>
 				<span class="image main"><img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/pic/{{dataArr.pic}}" alt="" width="900" height="600" /></span>
+
 				<p>{{dataArr.introduction}}</p>
 			</div>
 		</div>
