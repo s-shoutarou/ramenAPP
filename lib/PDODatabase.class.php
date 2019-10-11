@@ -88,7 +88,6 @@ class PDODatabase
             $this->catchError($stmt->errorInfo());
         }
     }
-
     public function createSQL($type = '', $table = '', $column = '', $where = [], $option = [])
     {
         switch ($type) {

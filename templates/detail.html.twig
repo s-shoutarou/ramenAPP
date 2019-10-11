@@ -64,6 +64,7 @@
 				{% for key,value in optionArr %}
 				<span>・{{value}}</span>
 				{% endfor %}
+				<p style="margin: 0">価格帯:{{dataArr.price_text}}</p>
 				<p style="margin: 0">煙草:{{dataArr.smoke}}</p>
 				<span class="image main"><img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/pic/{{dataArr.pic}}" alt="" width="900" height="600" /></span>
 

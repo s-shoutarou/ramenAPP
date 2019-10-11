@@ -45,6 +45,24 @@
 			</div>
 
 			<div class="form-item">
+				<label for="taste"></label>
+				<select name="price" required="required" placeholder="価格" class="price">
+					<option value="0">価格帯を選択して下さい</option>
+					{% for key, value in price_range %}
+					{% if value.price_text == detail.price_text %}
+					<option value="{{value.id}}" selected>{{value.price_text}}</option>
+					{% else %}
+					<option value="{{value.id}}">{{value.price_text}}</option>
+					{% endif %}
+					{% endfor %}
+				</select>
+				{% if taste|length > 0 %}
+				<p>{{emptytaste}}</p>
+				{% endif %}
+			</div>
+
+
+			<div class="form-item">
 				<p>画像を変更する場合は選択して下さい</p>
 				<label for="pic"></label>
 				<input id="pic" type="file" name="pic" placeholder="Pic"></input>
@@ -53,6 +71,8 @@
 				{% endif %}
 				<div class="prev" style="margin-top: 10px"><img width='150px' height='150px' src=" {{constant('ramenApp\\Bootstrap::APP_URL')}}pic/{{detail.pic}}" alt=""></div>
 			</div>
+			<div class="pic2"></div>
+			<div class="pic3"></div>
 
 			<div class="form-item">
 				<p>煙草について</p>
@@ -67,8 +87,12 @@
 				{% endif %}
 			</div>
 
-
-
+			<div class="form-item option-form">
+				<p>その他の情報</p>
+				{% for key, value in options %}
+				{{value|raw}}
+				{% endfor %}
+			</div>
 
 			<div class="form-item">
 				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください">{% if detail.introduction|length >0 %}{{detail.introduction}}{% endif %}</textarea>
@@ -85,8 +109,12 @@
 		<div class="form-footer">
 		</div>
 
+		{% for key,val in option_id %}
+		<input type="hidden" value="{{val}}" class="option-hidden">
+		{% endfor %}
+
 		<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/jquery.min.js"></script>
-		<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/fileprev.js"></script>
+		<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/auto_check.js"></script>
 </body>
 
 </html>

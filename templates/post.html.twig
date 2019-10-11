@@ -15,7 +15,7 @@
 				<label for="name"></label>
 				<input type="text" name="name" required="required" placeholder="店名" value="{% if name|length >0 %}{{name}}{% endif %}"></input>
 				{% if emptyname|length > 0 %}
-				<p>{{emptyname}}</p>
+				<p class="err_msg">{{emptyname}}</p>
 				{% endif %}
 			</div>
 
@@ -23,9 +23,10 @@
 				<label for="address"></label>
 				<input type="text" name="address" required="required" placeholder="住所" value="{% if address|length >0 %}{{address}}{% endif %}"></input>
 				{% if emptyaddress|length > 0 %}
-				<p>{{emptyaddress}}</p>
+				<p class="err_msg">{{emptyaddress}}</p>
 				{% endif %}
 			</div>
+
 
 			<div class="form-item">
 				<label for="taste"></label>
@@ -40,18 +41,33 @@
 					{% endfor %}
 				</select>
 				{% if taste|length > 0 %}
-				<p>{{emptytaste}}</p>
+				<p class="err_msg">{{emptytaste}}</p>
 				{% endif %}
 			</div>
+
+			<div class="form-item">
+				<label for="taste"></label>
+				<select name="price" required="required" placeholder="価格" class="price">
+					<option value="0">価格帯を選択して下さい</option>
+					{% for key, value in price_range %}
+					<option value="{{value.id}}">{{value.price_text}}</option>
+					{% endfor %}
+				</select>
+				{% if emptyprice|length > 0 %}
+				<p class="err_msg">{{emptyprice}}</p>
+				{% endif %}
+			</div>
+
 
 			<div class="form-item">
 				<label for="pic"></label>
 				<input id="pic" type="file" name="pic" required="required" placeholder="Pic"></input>
 				{% if emptypic|length > 0 %}
-				<p>{{emptypic}}</p>
+				<p class="err_msg">{{emptypic}}</p>
 				{% endif %}
 				<div class="prev" style="margin-top: 10px"></div>
 			</div>
+
 
 			<div class="form-item">
 				<p>煙草について</p>
@@ -70,7 +86,7 @@
 			<div class="form-item">
 				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{introduction}}{% endif %}"></textarea>
 				{% if emptyintroduction|length > 0 %}
-				<p>{{emptyintroduction}}</p>
+				<p class="err_msg">{{emptyintroduction}}</p>
 				{% endif %}
 			</div>
 
@@ -84,6 +100,8 @@
 
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/jquery.min.js"></script>
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/fileprev.js"></script>
+	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/pic.js"></script>
+
 </body>
 
 </html>

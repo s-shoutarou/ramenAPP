@@ -52,7 +52,8 @@ class PDOoperation
     public function getDataDetail($table, $column, $where, $arrVal)
     {
         $sql = 'SELECT ' . $column . ' FROM ' . $table
-            . ' INNER JOIN tastes ON ' . $table . '.taste = tastes.id WHERE ' . $table . '.id=?';
+            . ' INNER JOIN tastes ON ' . $table . '.taste = tastes.id INNER JOIN price_range ON '
+            . $table . '.price = price_range.id WHERE ' . $table . '.id=?';
         $this->db->sqlLOG($sql);
         $stmt = $this->db->getDbh()->prepare($sql);
         $resultData = [];
@@ -71,7 +72,7 @@ class PDOoperation
     {
         $resultData = [];
         $returnData = [];
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $in = $i + 1;
             $sql = 'SELECT ' . $column . ' FROM ' . $table
                 . ' INNER JOIN option_info ON ' . $table . '.option_id' . $in . ' = option_info.id WHERE ' . $table . '.id=?';
@@ -91,5 +92,19 @@ class PDOoperation
             }
         }
         return $returnData;
+    }
+
+    public function optionidClean($user_id)
+    {
+        $table = 'restaurants';
+        $column = '';
+        $where = [$user_id];
+        $arrVal = [];
+        for ($i = 1; $i < 8; $i++) {
+            $column .= 'option_id' . $i . '=?,';
+            array_push($arrVal, 0);
+        }
+        $column = substr($column, 0, -1);
+        $this->db->update($table, $column, $where, $arrVal);
     }
 }

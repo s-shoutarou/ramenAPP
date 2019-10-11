@@ -5,6 +5,7 @@ id int unsigned not null auto_increment,
 name varchar(255) not null,
 address varchar(255) not null,
 taste varchar(255) not null,
+price int(10),
 smoke varchar(10),
 option_id1 int(100),
 option_id2 int(100),
@@ -13,10 +14,9 @@ option_id4 int(100),
 option_id5 int(100),
 option_id6 int(100),
 option_id7 int(100),
-option_id8 int(100),
-option_id9 int(100),
-option_id10 int(100),
 pic varchar(255) not null,
+pic2 varchar(255),
+pic3 varchar(255),
 introduction text not null,
 user int(100) unsigned not null,
 primary key (id)
@@ -42,6 +42,12 @@ CREATE TABLE option_info (
 	primary key (id)
 );
 
+CREATE TABLE price_range (
+	id int unsigned not null auto_increment,
+	text text not null,
+	primary key (id)
+);
+
 INSERT INTO tastes (taste) VALUES ("しょうゆ");
 INSERT INTO tastes(taste) VALUES ("しお");
 INSERT INTO tastes (taste) VALUES ("とんこつ");
@@ -56,3 +62,7 @@ INSERT INTO option_info (text) VALUES ("薄味");
 INSERT INTO option_info (text) VALUES ("ライス無料");
 INSERT INTO option_info (text) VALUES ("太麺");
 INSERT INTO option_info (text) VALUES ("細麺");
+
+INSERT INTO price_range (text) VALUES ("0円〜600円");
+INSERT INTO price_range (text) VALUES ("600円〜1200円");
+INSERT INTO price_range (text) VALUES ("1200円〜");

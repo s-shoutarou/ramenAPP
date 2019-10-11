@@ -46,7 +46,7 @@ if (empty($context) && !empty($postData)) {
     $user_id = $_SESSION['user_id'];
     $options['option'] = ['smoke' => $smoke];
     $options['option'] = array_merge($options['option'], $_POST['option']);
-    $post->posting($fname, $name, $address, $taste, $introduction, $user_id, $options);
+    $post->posting($fname, $name, $address, $taste, $price, $introduction, $user_id, $options);
     echo '投稿したよ';
 } elseif (!empty($context)) {
     foreach ($postData as $key => $val) {
@@ -54,8 +54,17 @@ if (empty($context) && !empty($postData)) {
     }
 }
 
-$context['tastes'] = $post->getTaste();
-$context['options'] = $post->getOption();
+
+$subdata['subData'] = $post->getSubData();
+$context['tastes'] = $subdata['subData']['tastes'];
+$context['options'] = $subdata['subData']['option'];
+$context['price_range'] =  $subdata['subData']['price_range'];
+
+
+
+//$context['tastes'] = $post->getTaste();
+//$context['options'] = $post->getOption();
+//$context['prefecture'] = $post->getPrefecture();
 
 $template = $twig->loadTemplate('post.html.twig');
 $template->display($context);

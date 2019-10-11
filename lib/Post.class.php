@@ -11,10 +11,41 @@ class Post
         $this->db = $db;
     }
 
-    public function getTaste()
+    public function getSubData()
     {
-        $table = 'tastes';
-        $column = 'id,taste';
+        $table = [
+            'tastes',
+            'option_info',
+            'price_range'
+        ];
+        $column = [
+            'id,taste',
+            'id,text',
+            'id,price_text'
+        ];
+        $returnName = [
+            'tastes',
+            'option',
+            'price_range'
+        ];
+        $where = [];
+        $arrVal = [];
+
+        $option = ['all_flg' => 1];
+        for ($i = 0; $i < count($table); $i++) {
+            $r = $this->db->select($table[$i], $column[$i], $where, $arrVal, $option);
+            $r = array_shift($r);
+            $r = array_reverse($r);
+            $result[$returnName[$i]] = $r;
+        }
+        return $result;
+    }
+
+
+    /*   public function getPrefecture()
+    {
+        $table = 'prefecture';
+        $column = 'id,name';
         $where = [];
         $arrVal = [];
         $option = ['all_flg' => 1];
@@ -23,25 +54,12 @@ class Post
         $r = array_reverse($r);
         return $r;
     }
-
-    public function getOption()
-    {
-        $table = 'option_info';
-        $column = 'id,text';
-        $where = [];
-        $arrVal = [];
-        $option = ['all_flg' => 1];
-        $r = $this->db->select($table, $column, $where, $arrVal, $option);
-        $r = array_shift($r);
-        $r = array_reverse($r);
-        return $r;
-    }
-
-    public function posting($pic = '', $name = '', $address = '', $taste = '', $text = '', $user_id = '', $options = [])
+*/
+    public function posting($pic = '', $name = '', $address = '', $taste = '', $price = '', $text = '', $user_id = '', $options = [])
     {
         $table = 'restaurants';
-        $column = 'pic,name,address,taste,introduction,user,';
-        $arrVal = [$pic, $name, $address, $taste, $text, $user_id];
+        $column = 'pic,name,address,taste,price,introduction,user,';
+        $arrVal = [$pic, $name, $address, $taste, $price, $text, $user_id];
 
         $options = array_shift($options);
 

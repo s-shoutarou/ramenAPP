@@ -44,6 +44,7 @@ if (!empty($_FILES['pic']['tmp_name'])) {
     $fname = $fun->picUpload($_FILES);
     $postData =  array_merge($postData, ['pic' => $fname]);
 }
+
 if (empty($context['err_msg']) && !empty($postData)) {
     $user_id = $_SESSION['user_id'];
     $edit->editing($postData, $detailid);
@@ -53,8 +54,15 @@ if (empty($context['err_msg']) && !empty($postData)) {
         $context[$key] = $val;
     }
 }
+
+
 $context['detail'] = $det->getDetail($_GET['id']);
-$context['tastes'] = $post->getTaste();
+
+$subdata['subData'] = $post->getSubData();
+
+$context['options'] = $edit->makeCheckBox($subdata['subData']['option'], $context['detail']);
+$context['tastes'] = $subdata['subData']['tastes'];
+$context['price_range'] =  $subdata['subData']['price_range'];
 
 $template = $twig->loadTemplate('edit.html.twig');
 $template->display($context);
