@@ -19,6 +19,7 @@ class myRestaurant
         $where = ['user'];
         $arrVal = [$user_id];
         $result = $this->db->select($table, $column, $where, $arrVal);
+        $result = array_reverse($result);
         return $result;
     }
 }
