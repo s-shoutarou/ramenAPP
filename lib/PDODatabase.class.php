@@ -83,6 +83,7 @@ class PDODatabase
         $sql = $this->createSQL('update', $table, $column, $where);
         $stmt = $this->dbh->prepare($sql);
         if ($stmt->execute($arrVal)) {
+            $_SESSION['flash'] = '編集しました!';
             header('Location:myrestaurant.php');
         } else {
             $this->catchError($stmt->errorInfo());

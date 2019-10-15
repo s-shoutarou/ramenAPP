@@ -61,10 +61,5 @@ $context['options'] = $subdata['subData']['option'];
 $context['price_range'] =  $subdata['subData']['price_range'];
 
 
-
-//$context['tastes'] = $post->getTaste();
-//$context['options'] = $post->getOption();
-//$context['prefecture'] = $post->getPrefecture();
-
 $template = $twig->loadTemplate('post.html.twig');
 $template->display($context);

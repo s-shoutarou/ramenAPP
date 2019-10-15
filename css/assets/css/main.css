@@ -2354,8 +2354,7 @@ input, select, textarea {
 
 		.image.main {
 			display: block;
-			margin: 0 0 3em 0;
-			width: 100%;
+			width:900px;
 		}
 
 			.image.main img {
@@ -3327,3 +3326,27 @@ input, select, textarea {
 			}
 
 		}
+		.pic {
+			margin: 0 !important;
+			position: relative;
+		  }
+		  .img-width{
+			  height:600px;
+		  }
+		  .slide{
+			  float:left;
+			  z-index: 0;
+		  }
+		  .arrow{
+			  width: 30px;
+			  top:300px;
+			  position:relative;
+			  z-index: 1;
+		  }
+		  .left{
+			
+
+		  }
+		  .right{
+					left:835px;
+		  }

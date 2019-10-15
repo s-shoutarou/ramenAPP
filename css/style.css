@@ -141,3 +141,13 @@ textarea {
 .err_msg {
   color: #ee3e52;
 }
+
+.pic-frame {
+  overflow: hidden;
+  width: 900px;
+  height: 600px;
+  margin: 0 auto;
+}
+.pic {
+  margin: 0;
+}

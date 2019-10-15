@@ -13,9 +13,11 @@
 	<link rel="stylesheet" href="{{constant('ramenApp\\Bootstrap::APP_URL')}}css/assets/css/main.css" />
 	<noscript>
 		<link rel="stylesheet" href="{{constant('ramenApp\\Bootstrap::APP_URL')}}css/assets/css/noscript.css" /></noscript>
+	<script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <body class="is-preload">
+
 	<!-- Wrapper -->
 	<div id="wrapper">
 
@@ -66,9 +68,21 @@
 				{% endfor %}
 				<p style="margin: 0">価格帯:{{dataArr.price_text}}</p>
 				<p style="margin: 0">煙草:{{dataArr.smoke}}</p>
-				<span class="image main"><img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/pic/{{dataArr.pic}}" alt="" width="900" height="600" /></span>
+				<div class="pic-frame" style="overflow: hidden;overflow: hidden;width: 900px;height: 600px;margin: 0 auto">
+					<!--<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/chevron-left-solid.svg" alt="" class='arrow left' />
+					<img src="{{constant('ramenApp\\Bootstrap::APP_URL')}}images/chevron-right-solid.svg" alt="" class='arrow right' />-->
+					<div class="img-width">
+						<span class="image main slide"><img class="pic" src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/pic/{{dataArr.pic}}" alt="" width="900" height="600" /></span>
+						{% if dataArr.pic2|length > 0 %}
+						<span class="image main slide"><img class="pic" src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/pic/{{dataArr.pic2}}" alt="" width="900" height="600" /></span>
+						{% endif %}
+						{% if dataArr.pic3|length > 0 %}
+						<span class="image main slide"><img class="pic" src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/pic/{{dataArr.pic3}}" alt="" width="900" height="600" /></span>
+						{% endif %}
+					</div>
+				</div>
 
-				<p>{{dataArr.introduction}}</p>
+				<p style="word-break: break-all">{{dataArr.introduction}}</p>
 			</div>
 		</div>
 
@@ -121,6 +135,7 @@
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/js/browser.min.js"></script>
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/js/breakpoints.min.js"></script>
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/js/util.js"></script>
+	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/js/pic.js"></script>
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}/js/main.js"></script>
 
 </body>

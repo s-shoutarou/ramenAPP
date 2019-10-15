@@ -44,7 +44,7 @@ CREATE TABLE option_info (
 
 CREATE TABLE price_range (
 	id int unsigned not null auto_increment,
-	text text not null,
+	price_text text not null,
 	primary key (id)
 );
 
@@ -63,6 +63,6 @@ INSERT INTO option_info (text) VALUES ("ライス無料");
 INSERT INTO option_info (text) VALUES ("太麺");
 INSERT INTO option_info (text) VALUES ("細麺");
 
-INSERT INTO price_range (text) VALUES ("0円〜600円");
-INSERT INTO price_range (text) VALUES ("600円〜1200円");
-INSERT INTO price_range (text) VALUES ("1200円〜");
+INSERT INTO price_range (price_text) VALUES ("0円〜600円");
+INSERT INTO price_range (price_text) VALUES ("600円〜1200円");
+INSERT INTO price_range (price_text) VALUES ("1200円〜");

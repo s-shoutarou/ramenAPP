@@ -76,15 +76,15 @@
 
 			<div class="form-item">
 				<p>煙草について</p>
-				<label for="smoke"></label>
 				{% if detail.smoke == '禁煙' %}
-				<input type="radio" name="smoke" value="禁煙" class="detail-radio" checked>禁煙
-				<input type="radio" name="smoke" value="喫煙席有" class="detail-radio">喫煙席有
+				<label for="smoke"><input type="radio" name="smoke" value="禁煙" class="detail-radio" checked>禁煙 </label>
+				<label for="smoke"><input type="radio" name="smoke" value="喫煙席有" class="detail-radio">喫煙席有</label>
 				{% endif %}
 				{% if detail.smoke == '喫煙席有' %}
-				<input type="radio" name="smoke" value="禁煙" class="detail-radio">禁煙
-				<input type="radio" name="smoke" value="喫煙席有" class="detail-radio" checked>喫煙席有
+				<label for="smoke"><input type="radio" name="smoke" value="禁煙" class="detail-radio">禁煙</label>
+				<label for="smoke"><input type="radio" name="smoke" value="喫煙席有" class="detail-radio" checked>喫煙席有</label>
 				{% endif %}
+
 			</div>
 
 			<div class="form-item option-form">
@@ -114,7 +114,6 @@
 		{% endfor %}
 
 		<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/jquery.min.js"></script>
-		<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/auto_check.js"></script>
 </body>
 
 </html>

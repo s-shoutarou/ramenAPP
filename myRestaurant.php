@@ -10,6 +10,7 @@ use ramenApp\lib\Top;
 use ramenApp\lib\Session;
 use ramenApp\lib\myRestaurant;
 use Dotenv\Dotenv;
+use ramenApp\lib\Functions;
 
 $dotenv = Dotenv::create(__DIR__);
 $dotenv->load();
@@ -19,13 +20,25 @@ $twig = new \Twig_Environment($loade, [
     'cache' => getenv('CACHE_DIR')
 ]);
 
-$db = new PDODatabase(getenv('DB_HOST'), getenv('DB_NAME'), getenv('DB_USER'), getenv('DB_PASS'), getenv('LOG_PATH'));
+$db = new PDODatabase(
+    getenv('DB_HOST'),
+    getenv('DB_NAME'),
+    getenv('DB_USER'),
+    getenv('DB_PASS'),
+    getenv('LOG_PATH')
+);
+
 $top = new Top($db);
 $mr = new myRestaurant($db);
 $ses = new Session();
 
+$ses->sessionCheck($_SESSION['user_id']);
+
 $user_id = $_SESSION['user_id'];
 $context['dataArr'] = $mr->getMyRestaurant($user_id);
+
+//フラッシュメッセージ
+$context['flash'] = $ses->flash();
 
 if (!empty($_POST['search'])) {
     $searchText = $_POST['search'];

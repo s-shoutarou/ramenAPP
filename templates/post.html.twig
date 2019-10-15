@@ -67,12 +67,32 @@
 				{% endif %}
 				<div class="prev" style="margin-top: 10px"></div>
 			</div>
+			<!--<div class="pic2" style="display: none">
+				<div class="form-item">
+					<label for="pic2"></label>
+					<input id="pic2" type="file" name="pic2" placeholder="Pic2"></input>
+					{% if emptypic|length > 0 %}
+					<p class="err_msg">{{emptypic}}</p>
+					{% endif %}
+					<div class="prev2" style="margin-top: 10px"></div>
+				</div>
 
+			</div>
+			<div class="pic3" style="display: none">
+				<div class="form-item">
+					<label for="pic3"></label>
+					<input id="pic3" type="file" name="pic3" placeholder="Pic3"></input>
+					{% if emptypic|length > 0 %}
+					<p class="err_msg">{{emptypic}}</p>
+					{% endif %}
+					<div class="prev3" style="margin-top: 10px"></div>
+				</div>
+			</div>-->
 
 			<div class="form-item">
 				<p>煙草について</p>
-				<label for="smoke"><input type="radio" name="smoke" value="禁煙" class="detail-radio" checked>禁煙</label>
-				<label for="smoke"><input type="radio" name="smoke" value="喫煙席有" class="detail-radio">喫煙席有</label>
+				<label><input type="radio" name="smoke" value="禁煙" class="detail-radio" checked>禁煙</label>
+				<label><input type="radio" name="smoke" value="喫煙席有" class="detail-radio">喫煙席有</label>
 			</div>
 
 			<div class="form-item option-form">
@@ -84,7 +104,7 @@
 
 
 			<div class="form-item">
-				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{introduction}}{% endif %}"></textarea>
+				<textarea name="introduction" id="" cols="70" rows="10" placeholder="ラーメンに対する評価、ご感想をお書きください" value="{% if name|length >0 %}{{introduction}}{% endif %}">{% if introduction|length >0 %}{{introduction}}{% endif %}</textarea>
 				{% if emptyintroduction|length > 0 %}
 				<p class="err_msg">{{emptyintroduction}}</p>
 				{% endif %}
@@ -100,7 +120,6 @@
 
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/jquery.min.js"></script>
 	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/fileprev.js"></script>
-	<script src="{{constant('ramenApp\\Bootstrap::APP_URL')}}js/pic.js"></script>
 
 </body>
 

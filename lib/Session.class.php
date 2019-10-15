@@ -20,4 +20,11 @@ class Session
             return $flash;
         }
     }
+
+    public function sessionCheck($user_id)
+    {
+        if (empty($user_id)) {
+            header('Location:/ramenApp/top.php');
+        }
+    }
 }
