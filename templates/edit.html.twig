@@ -90,7 +90,17 @@
 			<div class="form-item option-form">
 				<p>その他の情報</p>
 				{% for key, value in options %}
-				{{value|raw}}
+				{% set i = 1 %}
+				{% if value.parameter == 0 %}
+					<label class="option-label">
+					<input type="hidden" name=option[{{i}}] value=0>
+					<input class="option" type="checkbox" name="option[{{i}}]" value="1">{{value.text}}</label>
+				{% elseif  value.parameter == 1 %}
+					<label class="option-label">
+					<input type="hidden" name=option[{{i}}] value=0>
+					<input class="option" type="checkbox" name="option[{{i}}]" value="1" checked=checked>{{value.text}}</label>
+				{% endif %}
+				{% set i = i + 1%}
 				{% endfor %}
 			</div>
 

@@ -98,7 +98,9 @@
 			<div class="form-item option-form">
 				<p>その他の情報</p>
 				{%for key,value in options%}
-				<label class="option-label"><input class="option" type="checkbox" name="option[]" value="{{value.id}}">{{value.text}}</label>
+				<label class="option-label">
+					<input type="hidden" name=option[{{key}}] value=0>
+					<input class="option" type="checkbox" name="option[{{key}}]" value="1">{{value.text}}</label>
 				{% endfor %}
 			</div>
 

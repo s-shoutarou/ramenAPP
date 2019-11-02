@@ -61,6 +61,7 @@ $context['detail'] = $det->getDetail($_GET['id']);
 $subdata['subData'] = $post->getSubData();
 
 $context['options'] = $edit->makeCheckBox($subdata['subData']['option'], $context['detail']);
+var_dump($context['options']);
 $context['tastes'] = $subdata['subData']['tastes'];
 $context['price_range'] =  $subdata['subData']['price_range'];
 

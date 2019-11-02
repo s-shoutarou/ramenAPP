@@ -60,6 +60,6 @@ $context['tastes'] = $subdata['subData']['tastes'];
 $context['options'] = $subdata['subData']['option'];
 $context['price_range'] =  $subdata['subData']['price_range'];
 
-
+var_dump($context['options']);
 $template = $twig->loadTemplate('post.html.twig');
 $template->display($context);
